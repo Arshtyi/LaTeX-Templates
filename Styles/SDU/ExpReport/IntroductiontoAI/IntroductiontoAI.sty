@@ -1,0 +1,124 @@
+% IntroductiontoAI.sty - Style file for Introduction to AI experiment reports
+
+% Page style configuration
+%\pagestyle{empty} % Uncomment to remove headers and footers
+
+% Essential packages
+\usepackage{blindtext}    % For sample text generation
+\usepackage{ctex}         % For Chinese text support
+\usepackage{indentfirst}  % Indent first paragraph after section
+\usepackage{booktabs}     % For professional tables
+\usepackage{amsmath}      % For mathematical formulas
+\usepackage{anyfontsize}  % Fix formula font size issues
+\usepackage{caption}      % Caption customization
+\usepackage{subcaption}   % Support for subfigures
+\usepackage{cleveref}     % Intelligent cross-referencing
+
+% Compact list spacing configuration (uncomment if needed)
+% \usepackage{paralist}
+% \let\itemize\compactitem
+% \let\enditemize\endcompactitem
+% \let\enumerate\compactenum
+% \let\endenumerate\endcompactenum
+% \let\description\compactdesc
+% \let\enddescription\endcompactdesc
+
+% Code listing style configuration
+\lstset{
+    basicstyle          =   \sffamily,          % Base code style
+    keywordstyle        =   \bfseries,          % Keyword style (bold)
+    commentstyle        =   \rmfamily\itshape,  % Comment style (italic)
+    stringstyle         =   \ttfamily,          % String style (monospace)
+    flexiblecolumns,                            % Flexible column formatting
+    numbers             =   left,               % Line numbers on left
+    showspaces          =   false,              % Don't show spaces
+    numberstyle         =   \zihao{-5}\ttfamily, % Line number style
+    showstringspaces    =   false,              % Don't show string spaces
+    captionpos          =   t,                  % Caption position (top)
+    frame               =   shadowbox,          % Frame style
+    rulesepcolor        =   \color{red!20!green!20!blue!20}, % Rule color
+}
+
+% JavaScript language definition
+\lstdefinelanguage{JavaScript}{
+  keywords={break, case, catch, continue, debugger, default, delete, do, else, finally, for, function, if, in, instanceof, new, return, switch, this, throw, try, typeof, var, void, while, with, let, const, class, export, import, super, extends},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  morestring=[b]`
+}
+
+% JavaScript code style
+\lstdefinestyle{JavaScript}{
+    language=JavaScript,
+    morekeywords={},
+    keywordstyle=\color{blue},
+    commentstyle=\color{red},
+    stringstyle=\color{green},
+    basicstyle=\ttfamily,
+    showstringspaces=false,
+    breaklines=true,
+}
+
+% HTML language definition
+\lstdefinelanguage{HTML}{
+  keywords={a, abbr, address, area, article, aside, audio, b, base, bdi, bdo, blockquote, body, br, button, canvas, caption, cite, code, col, colgroup, data, datalist, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, head, header, hr, html, i, iframe, img, input, ins, kbd, label, legend, li, link, main, map, mark, meta, meter, nav, noscript, object, ol, optgroup, option, output, p, param, picture, pre, progress, q, rp, rt, ruby, s, samp, script, section, select, small, source, span, strong, style, sub, summary, sup, svg, table, tbody, td, template, textarea, tfoot, th, thead, time, title, tr, track, u, ul, var, video, wbr},
+  sensitive=true,
+  morecomment=[s]{<!--}{-->},
+  morestring=[b]",
+  morestring=[b]'
+}
+
+% HTML code style
+\lstdefinestyle{html}{
+    language=HTML,
+    morekeywords={},
+    keywordstyle=\color{blue},
+    commentstyle=\color{red},
+    stringstyle=\color{green},
+    basicstyle=\ttfamily,
+    showstringspaces=false,
+    breaklines=true,
+}
+
+% CSS language definition
+\lstdefinelanguage{CSS}{
+  keywords={align, background, border, bottom, class, color, content, display, float, font, height, left, margin, padding, position, right, top, width},
+  sensitive=true,
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]'
+}
+
+% CSS code style
+\lstdefinestyle{css}{
+    language=CSS,
+    morekeywords={},
+    keywordstyle=\color{blue},
+    commentstyle=\color{red},
+    stringstyle=\color{green},
+    basicstyle=\ttfamily,
+    showstringspaces=false,
+    breaklines=true,
+}
+
+% Figure caption customization
+\renewcommand{\figurename}{Figure}
+\DeclareCaptionFormat{subfig}{Figure \thefigure~-~(#1:#3}
+\captionsetup[subfigure]{format=subfig,labelformat=simple}
+\renewcommand{\thesubfigure}{\alph{subfigure}}
+
+% Subfigure reference format customization
+\makeatletter
+\renewcommand{\p@subfigure}{\thefigure~-~(}
+\renewcommand{\thesubfigure}{\alph{subfigure})}
+\makeatother
+
+% Cross-reference naming
+\crefname{figure}{Figure}{Figures}
+\crefname{subfigure}{Figure}{Figures}  % Prefix for subfigure references
+
+% Layout adjustments
+\raggedbottom     % Allow bottom of page to be ragged rather than stretched
+\setlength{\parskip}{0.5\baselineskip} % Paragraph spacing
