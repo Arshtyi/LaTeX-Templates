@@ -1,43 +1,51 @@
+<!-- @format -->
+
 # Project Introduction
 
--   Self-made LaTeX templates for various purposes. Commercial use is prohibited.
+-   A collection of self-made LaTeX templates, also referencing various projects (see [Reference Projects](#reference-projects)).
+-   **Commercial use is prohibited.**
 
 # Important Notes
 
--   When using this project, pay close attention to file paths (including cls file paths, font file paths, etc.)
+-   When using this project, pay close attention to file paths (including `.cls` file paths, font file paths, etc.). Ensure they are correctly configured for your environment.
 
 # Environment
 
--   Developed on Ubuntu 22.04
--   Using [texlive20250308](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/)
--   All templates compiled using Xelatex->Xelatex or Xelatex->Bibtex->Xelatex->Xelatex methods
+-   Developed on Ubuntu 24.04. (This implies potential compatibility issues on other operating systems, especially regarding fonts. Please ensure dependencies are met.)
+-   Using [TeX Live 20250308](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/).
+-   Package version issues may occur. Use the command `tlmgr update --all` to update your packages.
+-   All templates are compiled using either `XeLaTeX -> XeLaTeX` or `XeLaTeX -> BibTeX -> XeLaTeX -> XeLaTeX` compilation workflows.
 
 # Project Structure
 
--   The `Templates` folder contains various templates, usually with Tex content separated from Code, Figures, etc., and no PDF files included
--   The `Cls` folder contains .cls files used by each template
--   The `Fonts` folder contains all fonts used in the templates
--   The `Styles` folder contains .sty files used by each template
--   The `Scripts` folder contains potentially useful scripts (not currently in use)
+-   **Templates/**: Contains various templates. Typically, TeX content is separated into subfolders like `Code/`, `Figures/`, etc. PDF output files are generally not included in the repository.
+-   **Cls/**: Contains the `.cls` (class) files used by each template.
+-   **Fonts/**: Contains all fonts used in the templates.
+-   **Styles/**: Contains the `.sty` (style) files used by each template.
+-   **Scripts/**: Contains potentially useful scripts (currently unused).
 
-# Current Templates (See [ChangeLog](https://github.com/Arshtyi/LaTeX-Templates/blob/main/CHANGELOG.md) for details)
+# Current Templates (See [CHANGELOG.md](https://github.com/Arshtyi/LaTeX-Templates/blob/master/CHANGELOG.md) for details)
 
--   [x] Shandong University Introduction to AI Experiment Report Template
--   [ ] Shandong University College Physics Experiment Report Template
--   [ ] Shandong University Introduction to Computing Experiment Report Template
--   [ ] Mathematics Notes Template (reference example: [Advanced Algebra](https://github.com/Arshtyi/Advanced-Algebra-Export))
+-   [x] [Shandong University - Introduction to AI Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/master/Templates/SDU/ExpReport/IntroductiontoAI)
+-   [ ] Shandong University - College Physics Experiment Report Template
+-   [ ] Shandong University - Introduction to Computing Experiment Report Template
+-   [ ] Shandong University - Beamer Template
+-   [x] [Mathematics Notes Template](https://github.com/Arshtyi/LaTeX-Templates/tree/master/Templates/Notebook/Math)
 
 # License
 
--   [LICENSE](https://github.com/Arshtyi/LaTeX-Templates/blob/main/LICENSE)
--   For personal use only. Commercial use is prohibited.
+-   See the [MIT LICENSE](https://github.com/Arshtyi/LaTeX-Templates/blob/master/LICENSE) file for details.
+-   These templates are intended for personal use only. **Commercial use is strictly prohibited.**
 
-# Contact Me
+# Contact
 
 -   QQ: 640006128
 -   Email: arshtyi_trantor@outlook.com
 
 # Reference Projects
 
+-   [LaTeX Templates](http://www.latextemplates.com/)
 -   [SDU-Report](https://github.com/oops-sdu/sdu_report)
 -   [SDU-Beamer](https://github.com/timerring/SDU-beamer)
+-   [Dotfiles](https://github.com/SeniorMars/dotfiles)
+-   [AlJabr](https://github.com/wenweili/AlJabr-1)

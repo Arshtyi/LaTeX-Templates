@@ -1,0 +1,438 @@
+\section{线性映射}
+\subsection{映射}
+\dfn{映射}{映射}{ 对于集合$A$、$B$,定义映射
+    \begin{align*}
+        \bm{f}:
+        A         & \longrightarrow B \\
+        \forall a & \longmapsto
+        \exists b =\bm{f}\left(a\right)
+    \end{align*}
+    且
+    \[
+        \mathrm{Im}\, \bm{f} =\bm{f}
+        \left(A\right)
+        =\left\{\bm{f}\left(a\right)\mid
+        a \in A\right\}
+    \]
+    称为$\bm{f}$的像集. 特别地,
+    \[
+        \bm{f}:A \longrightarrow A
+    \]
+    称为一个变换.
+}
+\dfn{单射、满射、双射}{单射、满射、双射}{
+    \[
+        \text{双射/一一对应}
+        \begin{cases*}
+            \text{满射（\textup{onto}）：}
+            \mathrm{Im}\,\bm{f} = B \\
+            \text{单射（\textup{1-1}）：}a_1
+            \neq a_2 \Longleftrightarrow
+            \bm{f}\left(a_1\right) \neq
+            \bm{f}\left(a_2\right)
+        \end{cases*}
+    \]
+}
+\exa{}{}{设
+    \begin{align*}
+        det:M_n\left(\mathbb{R}\right) & \longrightarrow \mathbb{R}      \\
+        \bm{A}                         & \longmapsto \left|\bm{A}\right|
+    \end{align*}
+    是满射,$n\geqslant 2$是不是单射.
+}
+\dfn{恒等映射}{恒等映射}{
+    如果一个变换是一个将任一元素变换为自身的
+    双射,称为一个恒等映射,记作$\bm{1}_A$或
+    $\bm{I}_A$.}
+\rem{}{}{ 恒等映射是特别的变换,
+    后者只是变换到同一集合,前者在双射的基础上
+    还要强调
+    任一元素均变换到自身. 这比变换的要求严格得多.
+
+    事实上,在变换的基础上,如果任一元素均映射到自身,
+    就可以确定这是双射了. 因此上面的定义其实是
+    有重合的.}
+\thm{}{映射相同}{
+    设两个映射
+    \[
+        \bm{f},\bm{g}:A\longrightarrow
+        B
+    \]
+    则$\bm{f}=\bm{g}$
+    当且仅当$\forall a \in A,\bm{f}
+        \left(a
+        \right) = \bm{g}
+        \left(a\right)$
+}
+\dfn{映射复合}{映射复合}{设
+    \[
+        \bm{f}
+        :A \longrightarrow B ,
+        \bm{g}
+        :B \longrightarrow C
+    \]
+    则有复合映射
+    \[
+        \bm{g} \circ \bm{f} :
+        A \longrightarrow
+        C
+    \]
+    \[
+        \bm{g} \circ \bm{f}
+        \left(a\right)
+        = \bm{g}
+        \left(\bm{f}
+        \left(a\right)\right)
+    \]
+    若$\bm{h}:
+        C \longrightarrow D$,有结合律：
+    \[
+        \bm{h}
+        \circ \left(\bm{g}
+        \circ \bm{f}
+        \right)
+        = \left(\bm{h}
+        \circ \bm{g}
+        \right) \circ \bm{f}
+    \]}
+\dfn{逆映射}{逆映射}{
+    若$\bm{f}:A\longrightarrow B$、
+    $\bm{g} : B \longrightarrow A$
+    使得
+    \[
+        \begin{cases*}
+            \bm{g}\circ\bm{f}=\bm{1}_A \\
+            \bm{f}\circ\bm{g}=\bm{1}_B
+        \end{cases*}
+    \]
+    那么称$\bm{g}$为$\bm{f}$的逆映射,
+    记作$\bm{g} = \bm{f}^{-1}$.
+}
+\lem{逆映射的存在性}{逆映射的存在性}{
+    $\bm{f} : A \longrightarrow B$的
+    逆映射存在当且仅当$\bm{f}$为双射.
+    \begin{proof}
+        先证充分性,设双射$\bm{f}$,$\forall b\in B$,由满性知
+        $\exists a\in A$使得$b=\bm{f}\left(a\right)$,由单性知
+        这样的$a$唯一. 构造
+        \begin{align*}
+            \bm{g}:B  & \longrightarrow A \\
+            \forall b & \longmapsto a
+        \end{align*}
+        此处$a$是唯一满足$\bm{f}\left(a\right)=b$的$a$.
+        这是一个映射且
+        \[
+            \begin{cases*}
+                \bm{g}\circ\bm{f}=\bm{1}_A \\
+                \bm{f}\circ\bm{g}=\bm{1}_B
+            \end{cases*}
+        \]
+        于是这是符合要求的逆映射.
+
+        再证必要性,即有$\bm{g}=\bm{f}^{-1}$. 先证明单性,设
+        $a_1,a_2\in A$使得$\bm{f}\left(a_1\right)=
+            \bm{f}\left(a_2\right)$,两边复合$\bm{g}$即得
+        $a_1=a_2$.
+
+        考虑满性,$\forall b\in B$,因为
+        \[
+            \bm{f}\left(\bm{g}\left(b\right)\right)=b
+        \]
+        故$\bm{g}\left(b\right)$是$b$的原像.
+    \end{proof}
+}
+\subsection{线性映射}
+\dfn{线性映射}{线性映射}{
+    设$\mathbb{K}$上的线性空间$V$、
+    $U$,映射\[
+        \bm{\varphi }:V \longrightarrow
+        U
+    \]
+
+    若$\forall \bm{\alpha}$、$\bm{\beta} \in V$,$\forall k \in \mathbb{K}$
+    \begin{enumerate}[label=\textup{(\arabic*)}]
+        \item $\bm{\varphi}\left(
+                  \bm{\alpha}+\bm{\beta}
+                  \right)=\bm{\varphi}\left(
+                  \bm{\alpha}
+                  \right)   +
+                  \bm{\varphi}\left(
+                  \bm{\beta}
+                  \right)$
+        \item $\bm{\varphi}\left(k\bm{\alpha}
+                  \right)=k\bm{\varphi}\left(
+                  \bm{\alpha}
+                  \right)$
+    \end{enumerate}
+    则称为一个线性映射.
+
+    特别地,$\bm{\varphi}:V
+        \longrightarrow V$
+    称为线性变换.
+
+    当$\bm{\varphi}$作为映射是单射或满射时,
+    称为是单或满线性映射.
+
+    当$
+        \bm{\varphi}$
+    作为映射是双射时,称为（线性）同构
+    （与线性空间之间的同构的定义相同）,
+    记作$V\cong U$.
+
+    $V=U$时$V$自身上的同构称为自同构.
+}
+\rem{}{}{定义线性空间之间的同构的时候,我们先要求双射,再要求
+    保持线性组合,\cref{def:线性映射}反过来先要求线性组合再要求双射.
+    两种定义是相同的.}
+\exa{}{}{
+    \[
+        \bm{\varphi}:
+        \forall \bm{\alpha}\in V
+        \longmapsto \bm{0}_U
+    \]
+    这是一个零线性映射$\bm{0}:V\longrightarrow U$.
+}
+\exa{}{}{
+    线性空间$V$上的线性变换
+    \begin{align*}
+        \bm{1}_V:
+        V           & \longrightarrow V \\
+        \bm{\alpha} & \longmapsto
+        \bm{\alpha}
+    \end{align*}
+    称为一个恒等映射或者恒等变换,
+    也是一个自同构.
+    记作$\bm{1}_V$或
+    $\bm{I}_V$或
+    $\mathbf{Id}_V$或
+    $\bm{I}$.
+}
+\exa{}{}{
+    需要说明的是,变换并不等于恒等映射,
+    变换只强调$V \longrightarrow V$,恒等变换
+    还需要$\bm{\alpha} \longmapsto
+        \bm{\alpha}$,
+    恒等映射是特别的变换.
+}\exa{}{2}{
+    设线性空间$\displaystyle
+        V = \mathbb{K}^n$,$\displaystyle
+        U = \mathbb{K}^m$,$\bm{A}
+        \in M_{m \times n}\left(
+        \mathbb{K}
+        \right)$,定义
+    \begin{align*}
+        \bm{\varphi}_{\bm{A}}
+        : \mathbb{K}^n &
+        \longrightarrow \mathbb{K}^m \\
+        \bm{\alpha}    & \longmapsto
+        \bm{A\alpha}
+    \end{align*}
+    是一个线性映射.
+}
+\rem{}{}{
+    可以看出,线性映射的几何意义就是矩阵乘法.
+    \cref{ex:2}非常重要.
+}
+\exa{}{}{
+    \begin{align*}
+        \bm{\varphi}:
+        \mathbb{K}_n &
+        \longrightarrow
+        \mathbb{K}^n   \\
+        \left(a_1,a_2,\cdots
+        ,a_n\right)  &
+        \longmapsto
+        \left(
+        a_1,a_2,\cdots,a_n
+        \right)'
+    \end{align*}
+    是线性同构.
+}
+\exa{}{}{
+    设$V_{\mathbb{K}}$的一组基为
+    $\left\{
+        \bm{e}_1,\bm{e}_2,\cdots,\bm{e}_n
+        \right\}$,则
+    \begin{align*}
+        \bm{\varphi}:
+        V & \longrightarrow \mathbb{K}^n \\
+        \bm{\alpha} =
+        \sum_{i = 1}^{n}a_i\bm{e}_i
+          & \longmapsto\left(
+        a_1,a_2,\cdots,a_n
+        \right)'
+    \end{align*}
+    是一个线性同构.
+}
+\exa{}{}{
+    设$\mathbb{K}$上的线性空间$V$,
+    取定$k \in \mathbb{K}$,
+    则\begin{align*}
+        \bm{\varphi}:
+        V           & \longrightarrow V \\
+        \bm{\alpha} & \longmapsto
+        k\bm{\alpha}
+    \end{align*}
+    这样一个线性变换称为数量/数乘变换.
+}
+\exa{}{}{
+    设$\left[0,1\right]$上的实无穷次可微函数
+    全体组成的实线性空间为$\displaystyle
+        C^{\infty}\left[0,1\right]$,则有
+    求导变换
+    \begin{align*}
+        \bm{\varphi}:
+        C^{\infty}\left[0,1\right] &
+        \longrightarrow
+        C^{\infty}\left[0,1\right]               \\
+        f\left(x\right)
+                                   & \longmapsto
+        \frac{\mathrm{d}}{\mathrm{d}x}
+        f\left(x\right) = f'\left(x\right)
+    \end{align*}
+    是$\displaystyle
+        C^{\infty}\left[0,1\right]$
+    上的线性变换.
+}
+\pro{线性映射的若干性质}{线性映射的若干性质}{
+    设线性映射$\bm{\varphi}:
+        V \longrightarrow U$,则
+    \begin{enumerate}[label=\textup{(\arabic*)}]
+        \item $\bm{\varphi}\left(\bm{0}_V
+                  \right)=\bm{0}_U$
+        \item $\forall \bm{\alpha},\bm{\beta}
+                  \in V,k,l \in \mathbb{K},$
+              则
+              $\bm{\varphi}\left(
+                  k\bm{\alpha} + l\bm{\beta}
+                  \right)=k\bm{\varphi}\left(
+                  \bm{\alpha}
+                  \right)+l\bm{\varphi}\left(
+                  \bm{\beta}
+                  \right)$即保持线性组合
+        \item 若$\bm{\varphi}$为同构,
+              则$\bm{\varphi}^{-1}$
+              也是同构
+        \item 若$\bm{\varphi}:V\longrightarrow U$
+              和$\bm{\psi}:U \longrightarrow
+                  W$均为线性映射或同构,则$\bm{\psi}
+                  \circ \bm{\varphi}:
+                  V \longrightarrow W$
+              是一个线性
+              映射或同构
+    \end{enumerate}
+    \begin{proof}
+        \begin{enumerate}[label=\textup{(\arabic*)}]
+            \item \[
+                      \bm{\varphi}\left(\bm{0}_V\right)=
+                      \bm{\varphi}\left(\bm{0}_V+\bm{0}_V\right)
+                      =\bm{\varphi}\left(\bm{0}_V\right)+\bm{\varphi}\left(\bm{0}_V\right)
+                      =\bm{0}_U
+                  \]
+            \item 拆分即可.
+            \item 因为$\bm{\varphi}$为双射,则$\bm{\varphi}^{-1}$为双射,只要证
+                  $\bm{\varphi}^{-1}$保持线性组合即可.
+                  任取$\bm{x},\bm{y}\in U,k,l\in\mathbb{K}$,
+                  只需证
+                  \[
+                      \bm{\varphi}^{-1}\left(k\bm{x}+l\bm{y}\right)=
+                      k\bm{\varphi}^{-1}\left(\bm{x}\right)+l
+                      \bm{\varphi}^{-1}\left(
+                      \bm{y}\right)
+                  \]
+                  作
+                  \begin{align*}
+                      \bm{\varphi}\left(
+                      \bm{\varphi}^{-1}\left(
+                          k\bm{x}+l\bm{y}\right)-
+                      k\bm{\varphi}^{-1}\left(\bm{x}\right)+l
+                      \bm{\varphi}^{-1}\left(
+                          \bm{y}\right)
+                      \right)=k\bm{x}+l\bm{y}-k\bm{x}-l\bm{y}=\bm{0}_U=\bm{\varphi}\left(\bm{0}_
+                      V\right)
+                  \end{align*}
+                  于是由单性即得.
+
+            \item 首先$\bm{\psi}\circ \bm{\varphi}$显然为双射,
+                  那么
+                  \begin{align*}
+                      \bm{\psi}\circ \bm{\varphi}\left(k\bm{\alpha}+l\bm{\beta}\right) & =\bm{\psi}\left(k\bm{\varphi}\left(\bm{\alpha}\right)+l\bm{\varphi}\left(\bm{\beta}\right)\right)       \\
+                                                                                       & =k\bm{\psi}\circ\bm{\varphi}\left(\bm{\alpha}\right)+l\bm{\psi}\circ\bm{\varphi}\left(\bm{\beta}\right)
+                      \qedhere\end{align*}
+        \end{enumerate}
+    \end{proof}
+}
+\cor{线性同构的存在性}{线性同构的存在性}{
+    事实上,应该说两个线性空间存在线性同构.
+    \begin{enumerate}[label=\textup{(\arabic*)}]
+        \item \label{1:1}线性同构是一种等价关系
+        \item \label{1:2}两个线性空间存在同构当且仅当
+              它们的维数相同
+    \end{enumerate}
+    \begin{proof}
+        证明\ref{1:2},先证必要性,设线性同构$\bm{\varphi}:
+            V\longrightarrow U$,任取$V$的基$\left\{\bm{e}_1,
+            \bm{e}_2,\cdots,\bm{e}_n\right\}$,从而
+        $\left\{\bm{\varphi}\left(\bm{e}_1\right),
+            \bm{\varphi}\left(\bm{e}_2\right),\cdots,\bm{\varphi}\left(\bm{e}_n\right)\right\}$
+        线性无关.
+
+        任取$\bm{x}\in U,\exists \bm{\alpha}\in V$,s.t.
+        $\bm{\varphi}\left(\bm{\alpha}\right)=\bm{x}$.
+        设$\bm{\alpha}=a_1\bm{e}_1+a_2\bm{e}_2+\cdots
+            +a_n\bm{e}_n$,那么
+        \[
+            \bm{x}=a_1\bm{\varphi}\left(\bm{e}_1\right)+
+            a_2\bm{\varphi}\left(\bm{e}_2\right)+\cdots+
+            a_n\bm{\varphi}\left(\bm{e}_n\right)
+        \]
+        于是$\left\{\bm{\varphi}\left(\bm{e}_1\right),
+            \bm{\varphi}\left(\bm{e}_2\right),\cdots,\bm{\varphi}\left(\bm{e}_n\right)\right\}$
+        是$U$的一组基. 即$\dim\,V=\dim\,U=n$.
+
+        然后是充分性,设$\dim\,V=\dim\,U=n$,取$V$的一组基
+        $\left\{\bm{e}_1,\bm{e}_2,\cdots,\bm{e}_n\right\}$和
+        $U$的一组基$\left\{\bm{f}_1,\bm{f}_2,\cdots,\bm{f}_n\right\}$.
+        构造线性同构：
+        \begin{align*}
+            \bm{\varphi}_V:
+            V & \longrightarrow \mathbb{K}^n \\
+            \bm{\alpha} =
+            \sum_{i = 1}^{n}a_i\bm{e}_i
+              & \longmapsto \begin{pmatrix}
+                                a_1    \\
+                                a_2    \\
+                                \vdots \\
+                                a_n
+                            \end{pmatrix}
+        \end{align*}
+        和
+        \begin{align*}
+            \bm{\varphi}_U:
+            U & \longrightarrow \mathbb{K}^n \\
+            \bm{x} =
+            \sum_{i = 1}^{n}b_i\bm{f}_i
+              & \longmapsto \begin{pmatrix}
+                                b_1    \\
+                                b_2    \\
+                                \vdots \\
+                                b_n
+                            \end{pmatrix}
+        \end{align*}
+        考虑$\bm{\varphi}_U^{-1}\circ \bm{\varphi}_V$即是线性同构.
+    \end{proof}
+}
+\rem{}{}{
+    两个线性空间存在同构时,将存在无数个线性同构,
+    但这并不意味着这两个线性空间之间的
+    任一线性映射均是线性同构. 即存在无穷多个并不等于
+    任取一个均满足.
+}
+\exa{}{}{
+    考虑$\bm{I}:V\longrightarrow V$为线性同构,但是零映射
+    $\bm{0}:V\longrightarrow V$不仅不是线性同构,甚至
+    都不是单射.
+}
+\rem{}{}{
+    不同数域上的线性空间之间的映射不是线性映射.
+}

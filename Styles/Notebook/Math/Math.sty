@@ -1,0 +1,614 @@
+% ===========================================================================
+% Mathematics Notebook Style Package
+% Package for mathematical typesetting with enhanced formatting
+% ===========================================================================
+
+% ===========================================================================
+% I. DOCUMENT STRUCTURE AND BASIC CONFIGURATION
+% ===========================================================================
+
+% --- Basic Document Structure Tools ---
+\usepackage{import}          % Import files from different directories
+\usepackage{comment}         % Comment out blocks of text
+\usepackage{etoolbox}        % Programming tools for LaTeX
+\usepackage{chngcntr}        % Control counter reset behaviors
+\usepackage[strict]{changepage} % Adjust page layout mid-document
+
+% --- Page Layout ---
+\usepackage[
+    tmargin=2cm,
+    bmargin=2cm,
+    lmargin=1in,
+    rmargin=1in,
+    margin=0.85in,
+    footskip=.2in
+]{geometry}                   % Page layout management
+
+\setlength{\parindent}{2em}  % Set paragraph indentation to width of two characters
+
+% --- Fix for underfull vbox issues ---
+\raggedbottom                 % Allow ragged bottom pages
+\setlength{\parskip}{0pt plus 3pt minus 1pt} % Add flexibility to paragraph spacing
+
+% ===========================================================================
+% II. FONT AND TYPOGRAPHY
+% ===========================================================================
+
+% --- Font Packages ---
+\usepackage[nomath]{lmodern}  % Latin Modern fonts (excluding math)
+\usepackage{newtxtext}        % Times-like text font
+\usepackage{newtxmath}        % Times-like math font (without varbb for hollow blackboard bold)
+\usepackage[scr=rsfso]{mathalpha} % Math alphabets (script, fraktur)
+
+% --- XeLaTeX Font Support ---
+\@ifpackageloaded{fontspec}{%
+    % fontspec already loaded in class file
+}{%
+    \PassOptionsToPackage{quiet}{fontspec}
+    \usepackage{fontspec}
+}
+
+% --- Micro-typographic Enhancements ---
+\usepackage{microtype}        % Improves spacing and appearance
+
+% ===========================================================================
+% III. MATHEMATICS EXTENSIONS
+% ===========================================================================
+
+% --- Math Environment Extensions ---
+\usepackage{cases}            % Enhanced case environments
+\usepackage{xfrac}            % Better diagonal fractions
+\usepackage[makeroom]{cancel} % Strikeout in math mode
+
+% --- Math Styles and Spacing ---
+\renewcommand\qedsymbol{\ensuremath{\mathcal{Q.E.D.}}} % Custom end-of-proof symbol with calligraphic font
+\allowdisplaybreaks[4]        % Allow page breaks in multi-line equations
+
+% ===========================================================================
+% IV. HYPERLINK AND CROSS-REFERENCE SYSTEM
+% ===========================================================================
+
+% --- Hyperref Configuration ---
+\@ifpackageloaded{hyperref}{%
+    \hypersetup{
+        unicode=true,
+        pdfencoding=auto,
+        pdfstartview=FitH,
+        pdfborder={0 0 0},
+        urlcolor=doc
+    }
+}{%
+    \PackageError{Math.sty}{The hyperref package should be loaded in Math.cls}{Class file error}
+}
+
+% --- Cross-Reference System ---
+\@ifpackageloaded{cleveref}{%
+    % Cleveref already loaded
+}{%
+    \usepackage{cleveref}
+}
+
+% ===========================================================================
+% V. COLOR DEFINITIONS AND VISUAL ELEMENTS
+% ===========================================================================
+
+% --- Color Package ---
+\usepackage[dvipsnames,svgnames]{xcolor} % Extended color support
+
+% --- Document Theme Colors ---
+\definecolor{doc}{RGB}{0,60,110}          % Main document color
+\definecolor{myg}{RGB}{56,140,70}         % Green for highlights
+\definecolor{myb}{RGB}{45,111,177}        % Blue for accents
+\definecolor{myr}{RGB}{199,68,64}         % Red for warnings
+\definecolor{myp}{RGB}{197,92,212}        % Purple for special items
+\definecolor{mygr}{HTML}{2C3338}          % Dark gray for subtle elements
+\definecolor{myred}{RGB}{127,0,0}         % Dark red for errors
+\definecolor{myyellow}{RGB}{169,121,69}   % Yellow/brown for annotations
+
+% --- Theorem Environment Colors ---
+\definecolor{mytheorembg}{HTML}{EBF5FF}   % Theorem background - light blue
+\definecolor{mytheoremfr}{HTML}{0369A1}   % Theorem frame - dark blue
+\definecolor{mylemmabg}{HTML}{F4F0FF}     % Lemma background - light purple
+\definecolor{mylemmafr}{HTML}{6D28D9}     % Lemma frame - dark purple
+\definecolor{myroplakebluelight}{HTML}{ECFDFF} % Proposition background - light cyan
+\definecolor{myroplakeblue}{HTML}{0891B2}    % Proposition frame - cyan
+\definecolor{mypropbg}{HTML}{EFF6FF}     % Corollary background - light indigo
+\definecolor{mypropfr}{HTML}{1D4ED8}     % Corollary frame - indigo
+\definecolor{myexamplebg}{HTML}{FEF7EF}   % Example background - light brown
+\definecolor{myexamplefr}{HTML}{9A3412}   % Example frame - brown
+\definecolor{myexampleti}{HTML}{7C2D12}   % Example title - dark brown
+\definecolor{mydefinitbg}{HTML}{ECFFFB}   % Definition background - light teal
+\definecolor{mydefinitfr}{HTML}{0D9488}   % Definition frame - teal
+\definecolor{myremarkbg}{HTML}{FFF1F2}    % Remark background - light red
+\definecolor{myremarkfr}{RGB}{199,20,44}  % Remark frame - bright red
+\definecolor{myremarkti}{RGB}{199,20,44}  % Remark title - bright red
+\definecolor{myclaimsbg}{HTML}{F7F7F8}    % Claim background - light gray
+\definecolor{myclaimsfr}{HTML}{3F3F46}    % Claim frame - dark gray
+\definecolor{myclaimsti}{HTML}{3F3F46}    % Claim title - dark gray
+
+% ===========================================================================
+% VI. GRAPHICS AND FIGURES
+% ===========================================================================
+
+% --- Basic Figure Support ---
+\usepackage{graphicx}         % Support for images
+\usepackage{rotating}         % Rotate figures and tables
+
+% --- TikZ Configuration ---
+\@ifpackageloaded{tikz}{%
+    \usetikzlibrary{arrows,positioning,calc,decorations.pathreplacing,arrows.meta,bending,cd,matrix}
+}{%
+    \PackageError{Math.sty}{The tikz package should be loaded in Math.cls}{Class file error}
+}
+
+% --- TikZ Styles ---
+\tikzset{
+    symbol/.style={
+            draw=none,
+            every to/.append style={
+                    edge node={node [sloped, allow upside down, auto=false]{$#1$}}
+                }
+        }%
+}
+
+% Node and vertex styles
+\tikzstyle{c} = [circle,fill=black,scale=0.5]
+\tikzstyle{b} = [draw, thick, black, -]
+\tikzset{
+    vertex/.style={
+            circle,
+            draw,
+            minimum size=6mm,
+            inner sep=0pt
+        }%
+}
+
+% --- Box Systems ---
+\usepackage{framed}           % Simple framed environments
+\usepackage[most,many,breakable]{tcolorbox} % Feature-rich colored boxes
+\usepackage{varwidth}         % Variable-width minipage
+
+% --- Captions ---
+\usepackage[format=hang,font=small,textfont=it]{caption} % Caption control
+
+% --- Graphics Utility Commands ---
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./Figures/}{#1.pdf_tex}
+}
+
+% ===========================================================================
+% VII. LISTS AND TABLES
+% ===========================================================================
+
+% --- List Customization ---
+\usepackage{enumitem}         % List customization
+
+% --- List Spacing ---
+\setenumerate[1]{itemsep=5pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setitemize[1]{itemsep=5pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setdescription{itemsep=5pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+
+% --- Table Enhancements ---
+\usepackage{array}            % Extended array capabilities
+\usepackage{multirow}         % Multi-row cells
+\usepackage{arydshln}         % Dashed lines in tables
+\usepackage{threeparttable}   % Tables with footnotes
+\usepackage{multicol}         % Multiple column layout
+
+% ===========================================================================
+% VIII. CODE LISTINGS
+% ===========================================================================
+
+\usepackage{listings}         % Source code formatting
+
+% --- Listing Style ---
+\lstset{
+    basicstyle=\small\ttfamily,
+    breaklines=true,
+    commentstyle=\color{myg},
+    keywordstyle=\color{myb},
+    stringstyle=\color{myr},
+    numbers=left,
+    numberstyle=\tiny\color{mygr},
+    frame=single,
+    tabsize=4
+}
+
+% ===========================================================================
+% IX. DOCUMENT STRUCTURE AND TOC
+% ===========================================================================
+
+% --- Page Headers and Footers ---
+\usepackage{fancyhdr}         % Header and footer control
+
+% --- Section Formatting ---
+\usepackage{titletoc}         % TOC formatting
+\usepackage{titlesec}         % Section title formatting
+
+% --- TOC Depth ---
+\setcounter{tocdepth}{1}      % Control TOC depth
+
+% --- Part Format in TOC ---
+\titlecontents{part}[0pc]
+{\addvspace{40pt}\centering\Large\bfseries\color{black}}
+{Part~\thecontentslabel~}
+{Part~}
+{}
+
+% --- Part Page Format ---
+\titleformat{\part}[display]
+{\thispagestyle{empty}\centering\normalfont\huge\bfseries}
+{\partname~\thepart}
+{20pt}
+{\Huge}
+[]
+
+% --- Chapter Label Command ---
+\newcommand{\chapterlabel}[1]{%
+    \begin{tikzpicture}[remember picture, baseline=0.5cm]
+        \shade[top color=doc!80, bottom color=doc!40, rounded corners=0.12cm]
+        (0,-0.1) rectangle (3.0,0.7);
+        \node[text=white, font=\large\bfseries, align=center] at (1.5,0.3) {#1};
+    \end{tikzpicture}%
+}
+
+% --- Chapter Format in TOC ---
+\makeatletter
+\renewcommand{\thechapter}{\arabic{chapter}}
+\titlecontents{chapter}[0pc]
+{\addvspace{2pt}\normalfont\vspace*{0.5ex}}
+{\parbox[c]{3.0pc}{%
+        \hspace*{-5.5pc}\chapterlabel{Chapter~~\thecontentslabel}%
+    }%
+    \hspace{-1.0pc}\color{doc!70}\large\bfseries}
+{\large\bfseries\color{doc!70}}
+{%
+    \vspace*{-0.5ex}
+    \hspace{0.5em}%
+    \textcolor{doc!70}{%
+        \cleaders\hbox{\rule{1pc}{0.6pt}}\hfill
+    }%
+    \hspace*{0.5em}\large\bfseries\color{doc!70}Page~~\thecontentspage
+}
+
+% --- Section Format in TOC ---
+\titlecontents{section}[3.7pc]
+{\addvspace{2pt}\normalfont\vspace*{1ex}}
+{\contentslabel[\thecontentslabel]{2pc}\normalfont\bfseries}
+{}
+{%
+    \hspace{0.5em}
+    \titlerule*[1pc]{\textcolor{doc!70}{.}}
+    \hspace*{0.5em}\small\thecontentspage
+}
+[]
+
+% --- Subsection Format in TOC ---
+\titlecontents{subsection}[5.7pc]
+{\addvspace{1pt}\normalfont\small\vspace*{0.8ex}}
+{\contentslabel[\thecontentslabel]{2pc}\normalfont}
+{}
+{%
+    \hspace{0.5em}
+    \titlerule*[1pc]{.}
+    \hspace*{0.5em}\thecontentspage
+}
+[]
+
+% --- Section Heading Format ---
+\titleformat{\section}
+{\normalfont\Large\bfseries\color{black}}
+{\thesection}
+{1em}
+{\centering}
+[]
+
+% --- Custom TOC Title ---
+\renewcommand{\contentsname}{Contents}
+\renewcommand{\tableofcontents}{%
+    \phantomsection%
+    \pdfbookmark[0]{\contentsname}{toc}%
+    \chapter*{}%
+    \vspace*{-20\p@}%
+    \noindent%
+    \begin{tikzpicture}[remember picture, overlay]%
+        \node[anchor=east, xshift=15cm, yshift=0.2cm, text=doc!60, font=\Huge\bfseries] {\contentsname};%
+        \fill[doc!60] (13,-.75) rectangle (20,1);%
+        \begin{scope}%
+            \clip (13,-.75) rectangle (20,1);%
+            \node[anchor=east, xshift=15cm, yshift=0.2cm, text=white, font=\Huge\bfseries] {\contentsname};%
+        \end{scope}%
+    \end{tikzpicture}%
+    \vspace*{20\p@}%
+    \@starttoc{toc}%
+}
+
+% ===========================================================================
+% X. THEOREM ENVIRONMENTS
+% ===========================================================================
+
+% --- Theorem Environment Definitions ---
+\newtcbtheorem[number within=section]{definition}{Definition}{enhanced,breakable,
+    before skip=2mm,after skip=2mm,
+    colback=mydefinitbg,colframe=mydefinitfr,
+    boxrule=0.5mm,
+    attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+    varwidth boxed title*=-3cm,
+    boxed title style={frame code={
+                    \path[fill=tcbcolback]
+                    ([yshift=-1mm,xshift=-1mm]frame.north west)
+                    arc[start angle=0,end angle=180,radius=1mm]
+                    ([yshift=-1mm,xshift=1mm]frame.north east)
+                    arc[start angle=180,end angle=0,radius=1mm];
+                    \path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+                        middle color=tcbcolback!80!black]
+                    ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+                    [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+                    -- (frame.south east) -- (frame.south west)
+                    -- ([xshift=-1mm,yshift=-1mm]frame.north west)
+                    [sharp corners]-- cycle;
+                },interior engine=empty,
+        },
+    fonttitle=\bfseries,
+    title={#2},
+    before upper={\setlength{\parindent}{2em}\everypar{\setlength{\hangindent}{0pt}}},
+    #1}{def}
+
+\newtcbtheorem[number within=section]{theorem}{Theorem}{enhanced,breakable,
+    before skip=2mm,after skip=2mm,
+    colback=mytheorembg,colframe=mytheoremfr,
+    boxrule=0.5mm,
+    attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+    varwidth boxed title*=-3cm,
+    boxed title style={frame code={
+                    \path[fill=tcbcolback]
+                    ([yshift=-1mm,xshift=-1mm]frame.north west)
+                    arc[start angle=0,end angle=180,radius=1mm]
+                    ([yshift=-1mm,xshift=1mm]frame.north east)
+                    arc[start angle=180,end angle=0,radius=1mm];
+                    \path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+                        middle color=tcbcolback!80!black]
+                    ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+                    [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+                    -- (frame.south east) -- (frame.south west)
+                    -- ([xshift=-1mm,yshift=-1mm]frame.north west)
+                    [sharp corners]-- cycle;
+                },interior engine=empty,
+        },
+    fonttitle=\bfseries,
+    title={#2},
+    before upper={\setlength{\parindent}{2em}\everypar{\setlength{\hangindent}{0pt}}},
+    #1}{thm}
+
+\newtcbtheorem[number within=section]{lemma}{Lemma}{enhanced,breakable,
+    before skip=2mm,after skip=2mm,
+    colback=mylemmabg,colframe=mylemmafr,
+    boxrule=0.5mm,
+    attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+    varwidth boxed title*=-3cm,
+    boxed title style={frame code={
+                    \path[fill=tcbcolback]
+                    ([yshift=-1mm,xshift=-1mm]frame.north west)
+                    arc[start angle=0,end angle=180,radius=1mm]
+                    ([yshift=-1mm,xshift=1mm]frame.north east)
+                    arc[start angle=180,end angle=0,radius=1mm];
+                    \path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+                        middle color=tcbcolback!80!black]
+                    ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+                    [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+                    -- (frame.south east) -- (frame.south west)
+                    -- ([xshift=-1mm,yshift=-1mm]frame.north west)
+                    [sharp corners]-- cycle;
+                },interior engine=empty,
+        },
+    fonttitle=\bfseries,
+    title={#2},
+    before upper={\setlength{\parindent}{2em}\everypar{\setlength{\hangindent}{0pt}}},
+    #1}{lem}
+
+\newtcbtheorem[number within=section]{proposition}{Proposition}{enhanced,breakable,
+    before skip=2mm,after skip=2mm,
+    colback=myroplakebluelight,colframe=myroplakeblue,
+    boxrule=0.5mm,
+    attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+    varwidth boxed title*=-3cm,
+    boxed title style={frame code={
+                    \path[fill=tcbcolback]
+                    ([yshift=-1mm,xshift=-1mm]frame.north west)
+                    arc[start angle=0,end angle=180,radius=1mm]
+                    ([yshift=-1mm,xshift=1mm]frame.north east)
+                    arc[start angle=180,end angle=0,radius=1mm];
+                    \path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+                        middle color=tcbcolback!80!black]
+                    ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+                    [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+                    -- (frame.south east) -- (frame.south west)
+                    -- ([xshift=-1mm,yshift=-1mm]frame.north west)
+                    [sharp corners]-- cycle;
+                },interior engine=empty,
+        },
+    fonttitle=\bfseries,
+    title={#2},
+    before upper={\setlength{\parindent}{2em}\everypar{\setlength{\hangindent}{0pt}}},
+    #1}{prop}
+
+\newtcbtheorem[number within=section]{example}{Example}{enhanced,breakable,
+    before skip=2mm,after skip=2mm,
+    colback=myexamplebg,colframe=myexamplefr,
+    boxrule=0.5mm,
+    attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+    varwidth boxed title*=-3cm,
+    boxed title style={frame code={
+                    \path[fill=tcbcolback]
+                    ([yshift=-1mm,xshift=-1mm]frame.north west)
+                    arc[start angle=0,end angle=180,radius=1mm]
+                    ([yshift=-1mm,xshift=1mm]frame.north east)
+                    arc[start angle=180,end angle=0,radius=1mm];
+                    \path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+                        middle color=tcbcolback!80!black]
+                    ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+                    [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+                    -- (frame.south east) -- (frame.south west)
+                    -- ([xshift=-1mm,yshift=-1mm]frame.north west)
+                    [sharp corners]-- cycle;
+                },interior engine=empty,
+        },
+    fonttitle=\bfseries,
+    title={#2},
+    before upper={\setlength{\parindent}{2em}\everypar{\setlength{\hangindent}{0pt}}},
+    #1}{ex}
+
+\newtcbtheorem[number within=section]{remark}{Remark}{enhanced,breakable,
+    before skip=2mm,after skip=2mm,
+    colback=myremarkbg,colframe=myremarkfr,
+    boxrule=0.5mm,
+    attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+    varwidth boxed title*=-3cm,
+    boxed title style={frame code={
+                    \path[fill=tcbcolback]
+                    ([yshift=-1mm,xshift=-1mm]frame.north west)
+                    arc[start angle=0,end angle=180,radius=1mm]
+                    ([yshift=-1mm,xshift=1mm]frame.north east)
+                    arc[start angle=180,end angle=0,radius=1mm];
+                    \path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+                        middle color=tcbcolback!80!black]
+                    ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+                    [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+                    -- (frame.south east) -- (frame.south west)
+                    -- ([xshift=-1mm,yshift=-1mm]frame.north west)
+                    [sharp corners]-- cycle;
+                },interior engine=empty,
+        },
+    fonttitle=\bfseries,
+    title={#2},
+    before upper={\setlength{\parindent}{2em}\everypar{\setlength{\hangindent}{0pt}}},
+    #1}{rem}
+
+\newtcbtheorem[number within=section]{corollary}{Corollary}{enhanced,breakable,
+    before skip=2mm,after skip=2mm,
+    colback=mypropbg,colframe=mypropfr,
+    boxrule=0.5mm,
+    attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+    varwidth boxed title*=-3cm,
+    boxed title style={frame code={
+                    \path[fill=tcbcolback]
+                    ([yshift=-1mm,xshift=-1mm]frame.north west)
+                    arc[start angle=0,end angle=180,radius=1mm]
+                    ([yshift=-1mm,xshift=1mm]frame.north east)
+                    arc[start angle=180,end angle=0,radius=1mm];
+                    \path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+                        middle color=tcbcolback!80!black]
+                    ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+                    [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+                    -- (frame.south east) -- (frame.south west)
+                    -- ([xshift=-1mm,yshift=-1mm]frame.north west)
+                    [sharp corners]-- cycle;
+                },interior engine=empty,
+        },
+    fonttitle=\bfseries,
+    title={#2},
+    before upper={\setlength{\parindent}{2em}\everypar{\setlength{\hangindent}{0pt}}},
+    #1}{cor}
+
+\newtcbtheorem[number within=section]{claim}{Claim}{enhanced,breakable,
+    before skip=2mm,after skip=2mm,
+    colback=myclaimsbg,colframe=myclaimsfr,
+    boxrule=0.5mm,
+    attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+    varwidth boxed title*=-3cm,
+    boxed title style={frame code={
+                    \path[fill=tcbcolback]
+                    ([yshift=-1mm,xshift=-1mm]frame.north west)
+                    arc[start angle=0,end angle=180,radius=1mm]
+                    ([yshift=-1mm,xshift=1mm]frame.north east)
+                    arc[start angle=180,end angle=0,radius=1mm];
+                    \path[left color=tcbcolback!60!black,right color=tcbcolback!60!black,
+                        middle color=tcbcolback!80!black]
+                    ([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+                    [rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+                    -- (frame.south east) -- (frame.south west)
+                    -- ([xshift=-1mm,yshift=-1mm]frame.north west)
+                    [sharp corners]-- cycle;
+                },interior engine=empty,
+        },
+    fonttitle=\bfseries,
+    title={\textcolor{myclaimsti}{#2}},
+    before upper={\setlength{\parindent}{2em}\everypar{\setlength{\hangindent}{0pt}}},
+    #1}{clm}
+
+% --- Shorthand Commands for Theorem Environments ---
+\newcommand{\dfn}[3]{\begin{definition}[colbacktitle=mydefinitfr]{#1}{#2}#3\end{definition}}
+\newcommand{\thm}[3]{\begin{theorem}[colbacktitle=mytheoremfr]{#1}{#2}#3\end{theorem}}
+\newcommand{\lem}[3]{\begin{lemma}[colbacktitle=mylemmafr]{#1}{#2}#3\end{lemma}}
+\newcommand{\pro}[3]{\begin{proposition}[colbacktitle=myroplakeblue]{#1}{#2}#3\end{proposition}}
+\newcommand{\exa}[3]{\begin{example}[colbacktitle=myexampleti]{#1}{#2}#3\end{example}}
+\newcommand{\rem}[3]{\begin{remark}[colbacktitle=myremarkti]{#1}{#2}#3\end{remark}}
+\newcommand{\cor}[3]{\begin{corollary}[colbacktitle=mypropfr]{#1}{#2}#3\end{corollary}}
+\newcommand{\clm}[3]{\begin{claim}[colbacktitle=myclaimsti]{#1}{#2}#3\end{claim}}% <- Comment added to prevent parsing errors
+
+% --- Proof Environment Customization ---
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+    \pushQED{\qed}%
+    \normalfont \topsep6\p@\@plus6\p@\relax
+    \trivlist
+    \item[\hskip\labelsep
+                \bfseries
+                \ensuremath{\mathcal{P}roof}\@addpunct{.}]\ignorespaces
+}{%
+    \popQED\endtrivlist\@endpefalse
+}
+
+% --- Solution Environment (like proof but without QED symbol) ---
+\newenvironment{solution}[1][\solutionname]{\par
+    \normalfont \topsep6\p@\@plus6\p@\relax
+    \trivlist
+    \item[\hskip\labelsep
+                \bfseries
+                \ensuremath{\mathcal{S}olution}\@addpunct{.}]\ignorespaces
+}{%
+    \endtrivlist\@endpefalse
+}
+\makeatother
+
+% --- Cleveref Configuration for Theorem Environments ---
+\crefname{tcb@cnt@definition}{\textbf{Definition}}{Definitions}
+\Crefname{tcb@cnt@definition}{\textbf{Definition}}{Definitions}
+\crefname{tcb@cnt@theorem}{\textbf{Theorem}}{Theorems}
+\Crefname{tcb@cnt@theorem}{\textbf{Theorem}}{Theorems}
+\crefname{tcb@cnt@lemma}{\textbf{Lemma}}{Lemmas}
+\Crefname{tcb@cnt@lemma}{\textbf{Lemma}}{Lemmas}
+\crefname{tcb@cnt@proposition}{\textbf{Proposition}}{Propositions}
+\Crefname{tcb@cnt@proposition}{\textbf{Proposition}}{Propositions}
+\crefname{tcb@cnt@example}{\textbf{Example}}{Examples}
+\Crefname{tcb@cnt@example}{\textbf{Example}}{Examples}
+\crefname{tcb@cnt@remark}{\textbf{Remark}}{Remarks}
+\Crefname{tcb@cnt@remark}{\textbf{Remark}}{Remarks}
+\crefname{tcb@cnt@corollary}{\textbf{Corollary}}{Corollaries}
+\Crefname{tcb@cnt@corollary}{\textbf{Corollary}}{Corollaries}
+\crefname{tcb@cnt@claim}{\textbf{Claim}}{Claims}
+\Crefname{tcb@cnt@claim}{\textbf{Claim}}{Claims}
+
+% ===========================================================================
+% XI. BIBLIOGRAPHY SUPPORT
+% ===========================================================================
+
+% --- Bibliography Generation Command ---
+\newcommand{\generateBibliography}[1]{%
+    \newpage%
+    \pagenumbering{Roman}%
+    \setcounter{page}{1}%
+    \pagestyle{plain}%
+    \nocite{*}%
+    \bibliographystyle{plain}%
+    \clearpage%
+    \phantomsection%
+    \renewcommand{\bibname}{References}%
+    \addcontentsline{toc}{chapter}{References}%
+    \bibliography{#1}%
+}
+
+% ===========================================================================
+% End of Style File
+% ===========================================================================

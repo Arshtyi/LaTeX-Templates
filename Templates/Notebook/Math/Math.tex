@@ -1,0 +1,61 @@
+% ===========================================================================
+% Mathematical Notes Document Template
+% ===========================================================================
+
+% ===================================
+% I. DOCUMENT CLASS AND PACKAGE IMPORTS
+% ===================================
+
+% --- Core Document Configuration ---
+\documentclass{../../../Cls/Notebook/Math/Math} % Custom document class for math notes
+\usepackage{../../../Styles/Notebook/Math/Math} % Custom style package with formatting options
+
+% ===================================
+% II. DOCUMENT METADATA
+% ===================================
+
+\title{\Huge{Mathematical Notes}} % Document title with large font size
+\author{\huge{\href{https://github.com/Arshtyi}{Arshtyi}}} % Author with hyperlink to GitHub profile
+\date{\today} % Current date (will be automatically updated)
+
+% ===========================================================================
+% III. DOCUMENT STRUCTURE
+% ===========================================================================
+\begin{document}
+
+% ===================================
+% FRONT MATTER
+% ===================================
+
+% --- Title Page ---
+\maketitle % Generate title page based on the metadata above
+\newpage
+
+% --- Preface ---
+\input{Tex/Preface.tex} % Include preface content from external file
+\newpage
+
+% --- Table of Contents ---
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\pagestyle{plain}
+\tableofcontents
+\newpage % Start main content on a new page
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\setlength{\headheight}{12.64723pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LO,RE]{\rightmark}
+\fancyfoot[LO,RE]{\thepage}
+\fancyfoot[C]{\href{https://github.com/Arshtyi}{\textit{Arshtyi}}}
+% ===================================
+% MAIN CONTENT: MATHEMATICS TOPICS
+% ===================================
+\input{Tex/Part1/Part1.tex}
+% \input{Tex/Part2/Part2.tex}
+\input{Tex/Appendix/Refs.tex}
+\end{document}
+% ===========================================================================
+% End of Document
+% ===========================================================================
