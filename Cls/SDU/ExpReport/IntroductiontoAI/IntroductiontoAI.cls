@@ -24,10 +24,10 @@
 
 % --- XeTeX and CJK Support ---
 \RequirePackage{ifxetex}      % Check if XeTeX engine is being used
-	\RequireXeTeX             % Ensure XeTeX is used
-	\ifxetex\else            % Error if not using XeTeX
-	\ClassError{IntroductiontoAI}{You must use the `xelatex' driver. Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so on.}
-	\fi
+\RequireXeTeX             % Ensure XeTeX is used
+\ifxetex\else            % Error if not using XeTeX
+    \ClassError{IntroductiontoAI}{You must use the `xelatex' driver. Please choose `xelatex'}{Just choose `xelatex', no `pdflatex' or `latex' and so on.}
+\fi
 \RequirePackage{xeCJK}        % Provides support for Chinese, Japanese, and Korean typesetting with XeTeX
 
 % --- Page Layout and Appearance ---
@@ -120,51 +120,51 @@
 % Defines the 'sduDocument' environment for the main report structure.
 \newenvironment{sduDocument}
 {	% Begin environment code
-	% Centered title block
-	\begin{center}
-		\huge{山东大学 \underline{~\sdu@tokens@college~} 学院 \\ % College Name
-		\underline{~\sdu@tokens@course~} 实验报告} % Course Name
-	\end{center}
-	% Framed section containing metadata
-	\begin{framed}
-	% Add metadata to the background of the page using eso-pic
-	\AddToShipoutPictureBG*{%
-		\setlength{\unitlength}{1mm} % Set unit for positioning
-		% Position and display metadata fields
-		% \put( 17, -45.6){\line(1,0){176}} % Upper horizontal line (commented out)
-		\put( 20, -50.0){\makebox(0,0)[l]{学号: \sdu@tokens@studentId}} % Student ID
-		\put( 60, -55.1){\line(0,1){9.8}} % Vertical separator line
-		\put( 62, -50.0){\makebox(0,0)[l]{姓名: \sdu@tokens@name}}     % Student Name
-        \put( 95, -55.1){\line(0,1){9.8}} % Vertical separator line
-        \put( 97, -50.0){\makebox(0,0)[l]{日期: \sdu@tokens@date}}     % Date
-		\put( 17, -55.1){\line(1,0){176}} % Lower horizontal line
-		\put( 20, -62.2){\makebox(0,0)[l]{\large{实验题目: \sdu@tokens@experimentalTopics}}} % Experimental Topics
-	}
-	\vspace{14mm} % Add vertical space after the header block
-}
-{	% End environment code
-	\end{framed} % End the framed metadata section
+    % Centered title block
+    \begin{center}
+        \huge{山东大学 \underline{~\sdu@tokens@college~} 学院 \\ % College Name
+            \underline{~\sdu@tokens@course~} 实验报告} % Course Name
+    \end{center}
+    % Framed section containing metadata
+    \begin{framed}
+        % Add metadata to the background of the page using eso-pic
+        \AddToShipoutPictureBG*{%
+            \setlength{\unitlength}{1mm} % Set unit for positioning
+            % Position and display metadata fields
+            % \put( 17, -45.6){\line(1,0){176}} % Upper horizontal line (commented out)
+            \put( 20, -50.0){\makebox(0,0)[l]{学号: \sdu@tokens@studentId}} % Student ID
+            \put( 60, -55.1){\line(0,1){9.8}} % Vertical separator line
+            \put( 62, -50.0){\makebox(0,0)[l]{姓名: \sdu@tokens@name}}     % Student Name
+            \put( 95, -55.1){\line(0,1){9.8}} % Vertical separator line
+            \put( 97, -50.0){\makebox(0,0)[l]{日期: \sdu@tokens@date}}     % Date
+            \put( 17, -55.1){\line(1,0){176}} % Lower horizontal line
+            \put( 20, -62.2){\makebox(0,0)[l]{\large{实验题目: \sdu@tokens@experimentalTopics}}} % Experimental Topics
+        }
+        \vspace{14mm} % Add vertical space after the header block
+        }
+        {	% End environment code
+    \end{framed} % End the framed metadata section
 }
 
 % --- Appendix Command ---
 % Defines a command to start the appendix section with a centered title.
-\newcommand\sduAppendix{\vspace{4 mm}\begin{center}\huge{附录}\end{center}}
+% \newcommand\sduAppendix{\vspace{4 mm}\begin{center}\huge{附录}\end{center}}
 
 % --- Metadata Setting Commands ---
 % User-facing commands to set the document metadata.
 % These commands update the internal token commands defined earlier.
 \newcommand*\sduCollege[1]{             % Sets the college name
-	\renewcommand{\sdu@tokens@college}{#1}}
+    \renewcommand{\sdu@tokens@college}{#1}}
 \newcommand*\sduCourse[1]{              % Sets the course name
-	\renewcommand{\sdu@tokens@course}{#1}}
+    \renewcommand{\sdu@tokens@course}{#1}}
 \newcommand*\sduStudentId[1]{           % Sets the student ID
-	\renewcommand{\sdu@tokens@studentId}{#1}}
+    \renewcommand{\sdu@tokens@studentId}{#1}}
 \newcommand*\sduName[1]{                % Sets the student name
-	\renewcommand{\sdu@tokens@name}{#1}}
+    \renewcommand{\sdu@tokens@name}{#1}}
 \newcommand*\sduExperimentalTopics[1]{  % Sets the experimental topics
-	\renewcommand{\sdu@tokens@experimentalTopics}{#1}}
+    \renewcommand{\sdu@tokens@experimentalTopics}{#1}}
 \newcommand*\sduDate[1]{                % Sets the date
-	\renewcommand{\sdu@tokens@date}{#1}}
+    \renewcommand{\sdu@tokens@date}{#1}}
 
 %% ============================================================================
 %% ==                         End of Class File                            ==

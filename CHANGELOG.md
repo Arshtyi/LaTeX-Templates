@@ -8,3 +8,7 @@
 # 2025-04-25
 
 -   Added Mathematics Notes Template
+
+# 2025-04-28
+
+-   Added Shandong University College Physics Experiment Report Template

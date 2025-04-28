@@ -27,7 +27,7 @@
 # Current Templates (See [CHANGELOG.md](https://github.com/Arshtyi/LaTeX-Templates/blob/master/CHANGELOG.md) for details)
 
 -   [x] [Shandong University - Introduction to AI Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/master/Templates/SDU/ExpReport/IntroductiontoAI)
--   [ ] Shandong University - College Physics Experiment Report Template
+-   [x] [Shandong University - College Physics Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/master/Templates/SDU/ExpReport/Physics)
 -   [ ] Shandong University - Introduction to Computing Experiment Report Template
 -   [ ] Shandong University - Beamer Template
 -   [x] [Mathematics Notes Template](https://github.com/Arshtyi/LaTeX-Templates/tree/master/Templates/Notebook/Math)
