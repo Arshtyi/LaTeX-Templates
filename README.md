@@ -28,7 +28,7 @@
 
 -   [x] [Shandong University - Introduction to AI Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/master/Templates/SDU/ExpReport/IntroductiontoAI)
 -   [x] [Shandong University - College Physics Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/master/Templates/SDU/ExpReport/Physics)
--   [x] [Shandong University - Introduction to Computing Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/master/Templates/SDU/ExpReport/Introductionto)
+-   [x] [Shandong University - Introduction to Computing Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/master/Templates/SDU/ExpReport/IntroductiontoComputing)
 -   [ ] Shandong University - Beamer Template
 -   [x] [Mathematics Notes Template](https://github.com/Arshtyi/LaTeX-Templates/tree/master/Templates/Notebook/Math)
 
