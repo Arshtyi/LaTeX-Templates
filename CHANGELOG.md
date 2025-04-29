@@ -13,3 +13,7 @@
 
 -   Added Shandong University College Physics Experiment Report Template
 -   Added Shandong University Introduction to Computing Experiment Report Template
+
+# 2025-04-29
+
+-   Added Shandong University Beamer Template

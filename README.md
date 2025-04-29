@@ -14,7 +14,7 @@
 -   Developed on Ubuntu 24.04. (This implies potential compatibility issues on other operating systems, especially regarding fonts. Please ensure dependencies are met.)
 -   Using [TeX Live 20250308](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/).
 -   Package version issues may occur. Use the command `tlmgr update --all` to update your packages.
--   All templates are compiled using either `XeLaTeX -> XeLaTeX` or `XeLaTeX -> BibTeX -> XeLaTeX -> XeLaTeX` compilation workflows.
+-   All templates are compiled using either `XeLaTeX -> XeLaTeX` or `XeLaTeX -> BibTeX(or Biber) -> XeLaTeX -> XeLaTeX` compilation workflows.
 
 # Project Structure
 
@@ -28,8 +28,8 @@
 
 -   [x] [Shandong University - Introduction to AI Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/master/Templates/SDU/ExpReport/IntroductiontoAI)
 -   [x] [Shandong University - College Physics Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/master/Templates/SDU/ExpReport/Physics)
--   [x] [Shandong University - Introduction to Computing Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/master/Templates/SDU/ExpReport/Introductionto)
--   [ ] Shandong University - Beamer Template
+-   [x] [Shandong University - Introduction to Computing Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/master/Templates/SDU/ExpReport/IntroductiontoComputing)
+-   [x] [ Shandong University - Beamer Template](https://github.com/Arshtyi/LaTeX-Templates/tree/master/Templates/SDU/Beamer)
 -   [x] [Mathematics Notes Template](https://github.com/Arshtyi/LaTeX-Templates/tree/master/Templates/Notebook/Math)
 
 # License
@@ -43,6 +43,8 @@
 -   Email: arshtyi_trantor@outlook.com
 
 # Reference Projects
+
+Borrowed from or developed based on the following projects.
 
 -   [LaTeX Templates](http://www.latextemplates.com/)
 -   [SDU-Report](https://github.com/oops-sdu/sdu_report)
