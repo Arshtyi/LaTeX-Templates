@@ -4,15 +4,16 @@
 % ===========================================================================
 
 % ===========================================================================
-% I. DOCUMENT STRUCTURE AND BASIC CONFIGURATION
+% I. CORE PACKAGES AND DOCUMENT CONFIGURATION
 % ===========================================================================
 
-% --- Basic Document Structure Tools ---
-\usepackage{import}          % Import files from different directories
-\usepackage{comment}         % Comment out blocks of text
-\usepackage{etoolbox}        % Programming tools for LaTeX
+% --- Document Structure and Basic Tools ---
+\usepackage{import}          % Package for importing files from different directories
+\usepackage{comment}         % Package for commenting out blocks of text
+\usepackage{etoolbox}        % Programming utilities and tools for LaTeX
 \usepackage{chngcntr}        % Control counter reset behaviors
 \usepackage[strict]{changepage} % Adjust page layout mid-document
+\usepackage{keyval}          % Key-value parsing for macro parameters
 
 % --- Page Layout ---
 \usepackage[
@@ -21,8 +22,9 @@
     lmargin=1in,
     rmargin=1in,
     margin=0.85in,
-    footskip=.2in
-]{geometry}                   % Page layout management
+    footskip=.2in,
+    headheight=12.64723pt
+]{geometry}                   % Page layout and margin management
 
 \setlength{\parindent}{2em}  % Set paragraph indentation to width of two characters
 
@@ -31,7 +33,7 @@
 \setlength{\parskip}{0pt plus 3pt minus 1pt} % Add flexibility to paragraph spacing
 
 % ===========================================================================
-% II. FONT AND TYPOGRAPHY
+% II. TYPOGRAPHY AND FONTS
 % ===========================================================================
 
 % --- Font Packages ---
@@ -45,58 +47,21 @@
     % fontspec already loaded in class file
 }{%
     \PassOptionsToPackage{quiet}{fontspec}
-    \usepackage{fontspec}
+    \usepackage{fontspec}    % Advanced font selection for XeLaTeX and LuaLaTeX
 }
 
 % --- Micro-typographic Enhancements ---
-\usepackage{microtype}        % Improves spacing and appearance
+\usepackage{microtype}        % Improves spacing, character protrusion, and font expansion
 
 % ===========================================================================
-% III. MATHEMATICS EXTENSIONS
-% ===========================================================================
-
-% --- Math Environment Extensions ---
-\usepackage{cases}            % Enhanced case environments
-\usepackage{xfrac}            % Better diagonal fractions
-\usepackage[makeroom]{cancel} % Strikeout in math mode
-
-% --- Math Styles and Spacing ---
-\renewcommand\qedsymbol{\ensuremath{\mathcal{Q.E.D.}}} % Custom end-of-proof symbol with calligraphic font
-\allowdisplaybreaks[4]        % Allow page breaks in multi-line equations
-
-% ===========================================================================
-% IV. HYPERLINK AND CROSS-REFERENCE SYSTEM
-% ===========================================================================
-
-% --- Hyperref Configuration ---
-\@ifpackageloaded{hyperref}{%
-    \hypersetup{
-        unicode=true,
-        pdfencoding=auto,
-        pdfstartview=FitH,
-        pdfborder={0 0 0},
-        urlcolor=doc
-    }
-}{%
-    \PackageError{Math.sty}{The hyperref package should be loaded in Math.cls}{Class file error}
-}
-
-% --- Cross-Reference System ---
-\@ifpackageloaded{cleveref}{%
-    % Cleveref already loaded
-}{%
-    \usepackage{cleveref}
-}
-
-% ===========================================================================
-% V. COLOR DEFINITIONS AND VISUAL ELEMENTS
+% III. COLOR DEFINITIONS
 % ===========================================================================
 
 % --- Color Package ---
-\usepackage[dvipsnames,svgnames]{xcolor} % Extended color support
+\usepackage[dvipsnames,svgnames]{xcolor} % Extended color support with predefined color sets
 
 % --- Document Theme Colors ---
-\definecolor{doc}{RGB}{0,60,110}          % Main document color
+\definecolor{doc}{RGB}{0,60,110}          % Main document color - dark blue
 \definecolor{myg}{RGB}{56,140,70}         % Green for highlights
 \definecolor{myb}{RGB}{45,111,177}        % Blue for accents
 \definecolor{myr}{RGB}{199,68,64}         % Red for warnings
@@ -127,12 +92,50 @@
 \definecolor{myclaimsti}{HTML}{3F3F46}    % Claim title - dark gray
 
 % ===========================================================================
+% IV. MATHEMATICS SUPPORT
+% ===========================================================================
+
+% --- Math Environment Extensions ---
+\usepackage{cases}            % Enhanced case environments for equations
+\usepackage{xfrac}            % Better diagonal fractions in inline math
+\usepackage[makeroom]{cancel} % Strikeout in math mode with adjusted spacing
+
+% --- Math Styles and Spacing ---
+\renewcommand\qedsymbol{\ensuremath{\mathcal{Q.E.D.}}} % Custom end-of-proof symbol with calligraphic font
+\allowdisplaybreaks[4]        % Allow page breaks in multi-line equations (level 4 = generous)
+
+% ===========================================================================
+% V. HYPERLINK AND CROSS-REFERENCE SYSTEM
+% ===========================================================================
+
+% --- Hyperref Configuration ---
+\@ifpackageloaded{hyperref}{%
+    \hypersetup{
+        unicode=true,
+        pdfencoding=auto,
+        pdfstartview=FitH,
+        pdfborder={0 0 0},
+        urlcolor=doc
+    }
+}{%
+    \PackageError{Math.sty}{The hyperref package should be loaded in Math.cls}{Class file error}
+}
+
+% --- Cross-Reference System ---
+\@ifpackageloaded{cleveref}{%
+    % Cleveref already loaded
+}{%
+    \usepackage{cleveref}    % Enhanced reference commands and automatic format
+}
+
+% ===========================================================================
 % VI. GRAPHICS AND FIGURES
 % ===========================================================================
 
 % --- Basic Figure Support ---
-\usepackage{graphicx}         % Support for images
-\usepackage{rotating}         % Rotate figures and tables
+\usepackage{graphicx}         % Support for including and manipulating images
+\usepackage{rotating}         % Support for rotating figures and tables
+\usepackage{subcaption}       % Support for subfigures with individual captions
 
 % --- TikZ Configuration ---
 \@ifpackageloaded{tikz}{%
@@ -149,9 +152,9 @@
                     edge node={node [sloped, allow upside down, auto=false]{$#1$}}
                 }
         }%
-}
+}% <- Comment to prevent parsing errors
 
-% Node and vertex styles
+% --- Node and vertex styles for graphs and diagrams ---
 \tikzstyle{c} = [circle,fill=black,scale=0.5]
 \tikzstyle{b} = [draw, thick, black, -]
 \tikzset{
@@ -161,28 +164,81 @@
             minimum size=6mm,
             inner sep=0pt
         }%
-}
+}% <- Comment to prevent parsing errors
 
 % --- Box Systems ---
-\usepackage{framed}           % Simple framed environments
-\usepackage[most,many,breakable]{tcolorbox} % Feature-rich colored boxes
-\usepackage{varwidth}         % Variable-width minipage
+\usepackage{framed}           % Simple framed and shaded text environments
+\usepackage[most,many,breakable]{tcolorbox} % Feature-rich colored boxes with many options
+\usepackage{varwidth}         % Variable-width minipage environments
 
 % --- Captions ---
-\usepackage[format=hang,font=small,textfont=it]{caption} % Caption control
+\usepackage[format=hang,font=small,textfont=it]{caption} % Advanced caption control
 
-% --- Graphics Utility Commands ---
-\newcommand{\incfig}[1]{%
-    \def\svgwidth{\columnwidth}
-    \import{./Figures/}{#1.pdf_tex}
-}
+% --- Enhanced Graphics Utility Command with Multiple Optional Parameters ---
+\define@key{incfig}{scale}{\def\figscale{#1}}
+\define@key{incfig}{float}{\def\figfloat{#1}}
+\define@key{incfig}{caption}{\def\figcaption{#1}}
+\define@key{incfig}{label}{\def\figlabel{#1}}
+
+\newcommand{\incfig}[2][]{%
+    % #1: Optional parameters in key=value format (empty by default)
+    % #2: Figure name (required)
+    \def\svgwidth{\columnwidth}%
+    \def\figcaption{}%
+    \def\figlabel{}%
+    \def\figscale{}%
+    \def\figfloat{htbp}%
+
+    % Parse options using keyval package
+    \setkeys{incfig}{#1}%
+
+    % Apply scaling if specified
+    \ifthenelse{\equal{\figscale}{}}{%
+        % No scaling specified, use columnwidth
+        \def\svgwidth{\columnwidth}%
+    }{%
+        % Use specified scaling
+        \def\svgwidth{\figscale\columnwidth}%
+    }%
+
+    \ifthenelse{\equal{\figcaption}{}}{%
+        % No caption - just include the figure
+        \import{./Figures/}{#2.pdf_tex}
+    }{%
+        % Caption provided - use figure environment
+        \expandafter\figure\expandafter[\figfloat]
+        \centering
+        \import{./Figures/}{#2.pdf_tex}
+        \caption{\figcaption}
+        \ifthenelse{\equal{\figlabel}{}}{}{%
+            \label{\figlabel}%
+        }
+        \endfigure
+    }
+}% <- Comment to prevent parsing errors
+
+% --- Figure and Subfigure Configuration ---
+\renewcommand{\figurename}{Figure} % Change the default name "Figure"
+\DeclareCaptionFormat{subfig}{Figure \thefigure~-~(#1): #3} % Custom format for subfigure captions
+\captionsetup[subfigure]{format=subfig, labelformat=simple} % Apply the custom format to subfigures
+\renewcommand{\thesubfigure}{\alph{subfigure}} % Use lowercase letters (a, b, c) for subfigure numbering
+
+% --- Subfigure Reference Format Customization ---
+\makeatletter
+\renewcommand{\p@subfigure}{\thefigure~-~(} % Prefix for subfigure references
+\renewcommand{\thesubfigure}{\alph{subfigure})} % Subfigure number format within references
+\makeatother
+
+% --- Cross-reference Naming for Figures ---
+\crefname{figure}{Figure}{Figures} % Define singular and plural names for figure references
+\crefname{subfigure}{Figure}{Figures} % Define singular and plural names for subfigure references
 
 % ===========================================================================
 % VII. LISTS AND TABLES
 % ===========================================================================
 
 % --- List Customization ---
-\usepackage{enumitem}         % List customization
+\usepackage{enumitem}         % Extensive control over lists (enumerate, itemize, description)
 
 % --- List Spacing ---
 \setenumerate[1]{itemsep=5pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
@@ -190,44 +246,44 @@
 \setdescription{itemsep=5pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
 
 % --- Table Enhancements ---
-\usepackage{array}            % Extended array capabilities
-\usepackage{multirow}         % Multi-row cells
+\usepackage{array}            % Extended array and tabular capabilities
+\usepackage{multirow}         % Create cells spanning multiple rows in tables
 \usepackage{arydshln}         % Dashed lines in tables
-\usepackage{threeparttable}   % Tables with footnotes
-\usepackage{multicol}         % Multiple column layout
+\usepackage{threeparttable}   % Tables with footnotes and notes
+\usepackage{multicol}         % Multiple column layout for text
 
 % ===========================================================================
 % VIII. CODE LISTINGS
 % ===========================================================================
 
-\usepackage{listings}         % Source code formatting
+\usepackage{listings}         % Source code formatting and syntax highlighting
 
 % --- Listing Style ---
 \lstset{
-    basicstyle=\small\ttfamily,
-    breaklines=true,
-    commentstyle=\color{myg},
-    keywordstyle=\color{myb},
-    stringstyle=\color{myr},
-    numbers=left,
-    numberstyle=\tiny\color{mygr},
-    frame=single,
-    tabsize=4
+    basicstyle=\small\ttfamily,  % Base font style - small monospace
+    breaklines=true,             % Allow line breaks in long lines
+    commentstyle=\color{myg},    % Style for comments - green
+    keywordstyle=\color{myb},    % Style for keywords - blue
+    stringstyle=\color{myr},     % Style for strings - red
+    numbers=left,                % Line numbers on left
+    numberstyle=\tiny\color{mygr}, % Line number style - tiny dark gray
+    frame=single,                % Single frame around code
+    tabsize=4                    % Tab size of 4 spaces
 }
 
 % ===========================================================================
-% IX. DOCUMENT STRUCTURE AND TOC
+% IX. DOCUMENT STRUCTURE AND TOC FORMATTING
 % ===========================================================================
 
 % --- Page Headers and Footers ---
-\usepackage{fancyhdr}         % Header and footer control
+\usepackage{fancyhdr}         % Advanced header and footer control
 
 % --- Section Formatting ---
-\usepackage{titletoc}         % TOC formatting
+\usepackage{titletoc}         % Table of contents formatting
 \usepackage{titlesec}         % Section title formatting
 
 % --- TOC Depth ---
-\setcounter{tocdepth}{1}      % Control TOC depth
+\setcounter{tocdepth}{1}      % Control TOC depth (1 = section level)
 
 % --- Part Format in TOC ---
 \titlecontents{part}[0pc]
@@ -251,7 +307,7 @@
         (0,-0.1) rectangle (3.0,0.7);
         \node[text=white, font=\large\bfseries, align=center] at (1.5,0.3) {#1};
     \end{tikzpicture}%
-}
+}% <- Comment to prevent parsing errors
 
 % --- Chapter Format in TOC ---
 \makeatletter
@@ -322,7 +378,7 @@
     \end{tikzpicture}%
     \vspace*{20\p@}%
     \@starttoc{toc}%
-}
+}% <- Comment to prevent parsing errors
 
 % ===========================================================================
 % X. THEOREM ENVIRONMENTS
@@ -545,7 +601,7 @@
 \newcommand{\exa}[3]{\begin{example}[colbacktitle=myexampleti]{#1}{#2}#3\end{example}}
 \newcommand{\rem}[3]{\begin{remark}[colbacktitle=myremarkti]{#1}{#2}#3\end{remark}}
 \newcommand{\cor}[3]{\begin{corollary}[colbacktitle=mypropfr]{#1}{#2}#3\end{corollary}}
-\newcommand{\clm}[3]{\begin{claim}[colbacktitle=myclaimsti]{#1}{#2}#3\end{claim}}% <- Comment added to prevent parsing errors
+\newcommand{\clm}[3]{\begin{claim}[colbacktitle=myclaimsti]{#1}{#2}#3\end{claim}}% <- Comment to prevent parsing errors
 
 % --- Proof Environment Customization ---
 \makeatletter
@@ -607,7 +663,7 @@
     \renewcommand{\bibname}{References}%
     \addcontentsline{toc}{chapter}{References}%
     \bibliography{#1}%
-}
+}% <- Comment to prevent parsing errors
 
 % ===========================================================================
 % End of Style File
