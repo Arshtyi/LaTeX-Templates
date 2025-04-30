@@ -1,6 +1,4 @@
-<!-- @format -->
-
 # Template Description
 
--   Shandong University Introduction to Computing Experiment Report Template
--   Compilation method: `Xelatex`
+- Shandong University Introduction to Computing Experiment Report Template
+- Compilation method: `Xelatex`

@@ -1,6 +1,4 @@
-<!-- @format -->
-
 # Template
 
--   Shandong University College Physics Experiment Report Template
--   Compilation method: `Xelatex`
+- Shandong University College Physics Experiment Report Template
+- Compilation method: `Xelatex`
