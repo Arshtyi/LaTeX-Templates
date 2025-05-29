@@ -1,0 +1,247 @@
+\newpage
+\section{不变子空间}
+\subsection{定义}
+\dfn{不变子空间}{不变子空间}{
+    设线性映射$\bm{\varphi}\in \mathcal{L}\left(V_{\mathbb{K}}\right)$,
+    $U$是$V$的子空间. 若
+    \[
+        \bm{\varphi}\left(U\right)\subseteq U
+    \]
+    则称$U$为线性变换
+    $\bm{\varphi}
+    $的不变子空间,或称为$\bm
+        {\varphi}$-不变子空间.
+}
+\dfn{}{线性变换的限制}{
+    已知$U$为$\bm{\varphi}$-不变子空间,
+    若进一步将$\bm{\varphi}$的定义域限制在$U$上,则这个$\bm{\varphi}$
+    称为$U$上的一个线性变换,称为$\bm{\varphi}$诱导出的
+    线性变换或者是$\bm{\varphi}$在$U$上的限制,记作
+    \[
+        \bm{\varphi}\Big |_U:U\longrightarrow U
+    \]
+}
+\exa{}{}{
+    设$\bm{\varphi}\in \mathcal{L}\left(V
+        \right)$,则一定有两个平凡的$\bm{\varphi}$-不变子空间
+    即零子空间$0$和全子空间$V$. 此外,核空
+    间$\mathrm{Ker}\,\bm{\varphi}$和像空间$\mathrm{Im}\,\bm{\varphi}$
+    存在时也一定是$\bm{\varphi}$-不变子空间.
+}
+\clm{}{}{
+    在此定义的线性变换在$V$不是$0$时一定是非零映射.
+}
+\rem{}{}{
+    事实上,像空间和核空间都是必定存在的,但是当映射是恒等变换时,
+    像空间即全子空间,零空间即零子空间. 因此上面应该说是像空间和核空间非平凡或者是
+    非平凡的像空间和核空间存在时.
+}
+\rem{}{}{
+    零子空间$0$指的是只含有零向量的线性子空间,零空间是核空间$\mathrm{Ker}\,\bm{\varphi}$.
+    显然\[
+        0\subseteq \mathrm{Ker}\,\bm{\varphi}
+    \]
+}
+\exa{}{}{
+    考虑$V=\mathbb{R}^2$,线性变换$\bm{\varphi}$为绕原点逆时针旋转$\theta$角,
+    其在标准基下的表示矩阵为
+    \[
+        \bm{A}=\begin{bmatrix}
+            \cos \theta & -\sin \theta \\
+            \sin \theta & \cos \theta
+        \end{bmatrix}
+    \]
+    设$L$为一维$\bm{\varphi}$-不变子空间即$\bm{\varphi}\left(
+        L
+        \right)\subseteq L$,容易知道
+    $\theta \neq k\pi\left(k\in \mathbb{Z}\right)$
+    时这样的$L$不存在即此时$\bm{\varphi}$没有
+    非平凡的不变子空间.
+}
+\exa{}{}{
+    考虑$\bm{\varphi}:\bm{\alpha}\longmapsto k\bm{\alpha}
+        \left(k\in \mathbb{K}\text{固定}\right)$,则
+    $V$的任一子空间均为$\bm{\varphi}$-不变子空间.
+}
+\lem{}{张成的子空间为不变子空间}{
+    设线性变换$\bm{\varphi}\in \mathcal{L}\left(V
+        \right)$,子空间$U=L\left(\bm{\alpha}_1,\bm{\alpha}_2,\cdots
+        ,\bm{\alpha}_m\right)$,其中$\bm{\alpha}_i\in V$,则
+    $U$为$\bm{\varphi}$-不变子空间等价于
+    \[
+        \bm{\varphi}\left(\bm{\alpha}_i\right)
+        \in U\left(\forall 1 \leqslant i \leqslant m \right)
+    \]\begin{proof}
+        必要性显然. 下证充分性.
+
+        设$\bm{\varphi}\left(\bm{\alpha}_i\right)\in U\left(1\leqslant i\leqslant m\right)$,任取$\bm{\alpha}
+            \in U$. 故有
+        \[
+            \bm{\alpha}=\lambda_1\bm{\alpha}_1+\lambda_2\bm{\alpha}_2+\cdots+\lambda_m\bm{\alpha}_m
+        \]
+        则两边作用$\bm{\varphi}$即证.
+    \end{proof}
+}
+\subsection{表示矩阵}
+\thm{}{不变子空间诱导的线性变换的表示矩阵}{
+    设线性变换$\bm{\varphi}\in \mathcal{L}\left(V^n\right)$,
+    且$U$为$\bm{\varphi}$-不变子空间,取$U$的一组基
+    为$\left\{\bm{e}_1,\bm{e}_2,
+        \cdots,\bm{e}_r\right\}$,将其扩张为
+    $V$的一组基$\left\{\bm{e}_1,\bm{e}_2,\cdots,\bm{e}_r,\bm{e}_{r+1},\cdots,
+        \bm{e}_n\right\}$,则$\bm{\varphi}$在这一组基下的表示矩阵的形式为
+    \[
+        \begin{pmatrix}
+            \bm{A}^r & \bm{B}\quad\, \\
+            \bm{O}   & \bm{D}^{n-r}
+        \end{pmatrix}
+    \]\begin{proof}
+        因为$\bm{\varphi}\left(\bm{e}_i\right)\in U\left(1\leqslant i\leqslant r\right)$,即有
+        \[
+            \begin{cases*}
+                \bm{\varphi}\left(\bm{e}_1\right)=a_{11}\bm{e}_1+a_{21}\bm{e}_2+\cdots+a_{r1}\bm{e}_r \\
+                \bm{\varphi}\left(\bm{e}_2\right)=a_{12}\bm{e}_1+a_{22}\bm{e}_2+\cdots+a_{r2}\bm{e}_r \\
+                \qquad\qquad\cdots\cdots\cdots\cdots\cdots                                            \\
+                \bm{\varphi}\left(\bm{e}_r\right)=a_{1r}\bm{e}_1+a_{2r}\bm{e}_2+\cdots+a_{rr}\bm{e}_r
+            \end{cases*}
+        \]
+        于是
+        \begin{align*}
+              & \left(\bm{\varphi}\left(\bm{e}_1\right),
+            \bm{\varphi}\left(\bm{e}_2\right),
+            \cdots,\bm{\varphi}\left(\bm{e}_r\right),
+            \bm{\varphi}\left(\bm{e}_{r+1}\right),
+            \cdots,\bm{\varphi}\left(\bm{e}_n\right)\right)
+            \\
+            = &
+            \left(\bm{e}_1,\bm{e}_2,\cdots,\bm{e}_r,\bm{e}_{r+1},\cdots,\bm{e}_n\right)
+            \begin{bmatrix}
+                \bm{A}^r & \bm{B}\quad\, \\
+                \bm{O}   & \bm{D}^{n-r}
+            \end{bmatrix}
+            \qedhere
+        \end{align*}
+    \end{proof}
+}
+\cref{thm:不变子空间诱导的线性变换的表示矩阵}的逆命题也是成立的,即\thm{}{线性变换的限制诱导的不变子空间}{
+    设线性变换$\bm{\varphi}\in \mathcal{L}\left(
+        V^n\right)$,且$\bm{\varphi}$在$V$的一组基
+    $\left\{\bm{e}_1,\bm{e}_2,\cdots,
+        \bm{e}_n\right\}$下的表示矩阵具有形式
+    \[
+        \begin{pmatrix}
+            \bm{A}^r & \bm{B}\quad\, \\
+            \bm{O}   & \bm{D}^{n-r}
+        \end{pmatrix}
+    \]
+    那么$U=L\left(\bm{e}_1,\bm{e}_2,\bm{e}_r\right)$
+    是$\bm{\varphi}$-不变子空间.
+}
+\cor{}{不变子空间分解全空间}{
+    设线性变换$\bm{\varphi}\in \mathcal{L}\left(V^n\right)$,
+    且$V=V_1\oplus V_2$（$V_1$、$V_2$均为$\bm{\varphi}$-不变子空间）,
+    那么一定可以分别取$V_1$、$V_2$的一组基来拼成$V$的一组基,使得
+    $\bm{\varphi}$在这组基下的表示矩阵为
+    \[
+        \begin{pmatrix}
+            \bm{A}^r & \bm{O}\quad\, \\
+            \bm{O}   & \bm{D}^{n-r}
+        \end{pmatrix}
+    \]\begin{proof}
+        取$V_1$的基$\left\{\bm{e}_1,\bm{e}_2,\cdots,\bm{e}_r\right\}$,
+        $V_2$的基$\left\{\bm{e}_{r+1},\cdots,\bm{e}_n\right\}$. 因为
+        $\bm{\varphi}\left(\bm{e}_i\right)\in V_1\left(\forall 1\leqslant i\leqslant r\right)$,
+        $\bm{\varphi}\left(\bm{e}_i\right)\in V_2\left(\forall r+1\leqslant i\leqslant n\right)$.
+        仿照\cref{thm:不变子空间诱导的线性变换的表示矩阵}即得.
+    \end{proof}
+}
+\cor{}{全空间分解为不变子空间}{
+设线性变换$\bm{\varphi}\in \mathcal{L}\left(
+    V^n
+    \right)$,且$V=V_1\oplus V_2\oplus \cdots \oplus V_m$（$V_i$均为
+$\bm{\varphi}$-不变子空间）,分别取$V_i$的基,设$\bm{\varphi}\big |_{V_i}$在
+给定基下的表示矩阵为$\bm{A}_i\left(1\leqslant i \leqslant m\right)$,
+则将这些$V_i$的基拼成$V$的一组基后,
+$\bm{\varphi}$在这组基下的表示矩阵为\[\bm{A}=
+    \mathrm{diag}\left\{
+    \bm{A}_1,\bm{A}_2,\cdots,\bm{A}_m
+    \right\}\]
+}
+\subsection{例子}
+\exa{}{}{
+    设$V^3$的一组基为$\left\{\bm{e}_1,\bm{e}_2,\bm{e}_3\right\}$,
+    线性变换$\bm{\varphi}\in \mathcal{L}\left(V\right)$在这组基下的表示矩阵为
+    \[\bm{A}=
+        \begin{pmatrix}
+            3 & 1 & -1 \\
+            2 & 2 & -1 \\
+            2 & 2 & 0
+        \end{pmatrix}
+    \]
+    求证：$U=L\left(\bm{e}_3,\bm{e}_1+\bm{e}_2+2\bm{e}_3\right)$为$\bm{\varphi}$-不变子空间.
+    \begin{proof}
+        只需证
+        \[
+            \bm{\varphi}\left(\bm{e}_3\right)\in U,
+            \bm{\varphi}\left(\bm{e}_1+\bm{e}_2+2\bm{e}_3\right)\in U
+        \]
+        通过线性同构
+        \[
+            \bm{\eta}:V\longrightarrow \mathbb{K}^3
+        \]
+        我们仅需要验证坐标向量即可
+        \[
+            \bm{e}_3 \longmapsto \begin{pmatrix}
+                0 \\
+                0 \\
+                1
+            \end{pmatrix},\bm{e}_1+\bm{e}_2+2\bm{e}_3\longmapsto
+            \begin{pmatrix}
+                1 \\1\\2
+            \end{pmatrix}
+        \]
+        作线性变换
+        \[
+            \bm{\varphi}\left(\bm{e}_3\right)=\bm{A}\begin{pmatrix}
+                0 \\0\\1
+            \end{pmatrix}=\begin{pmatrix}
+                -1 \\-1\\0
+            \end{pmatrix},\bm{\varphi}\left(\bm{e}_1+\bm{e}_2+2\bm{e}_3\right)=
+            \bm{A}\begin{pmatrix}
+                1 \\1\\2
+            \end{pmatrix}=\begin{pmatrix}
+                2 \\2\\4
+            \end{pmatrix}
+        \]
+        只需要证明$\bm{\varphi}\left(\bm{e}_3\right)$和
+        $\bm{\varphi}\left(\bm{e}_1+\bm{e}_2+2
+            \bm{e}_3\right)$是$\bm{e}_3$、$\bm{e}_1
+            +\bm{e}_2+2\bm{e}_3$的线性组合即可. 一般地,这就是解线性方程组
+        \[
+            \begin{pmatrix}
+                0 & 1 \\0&1\\1&2
+            \end{pmatrix}\bm{x}=\bm{\varphi}\left(\bm{e}_3\right)
+            ,
+            \begin{pmatrix}
+                0 & 1 \\0&1\\1&2
+            \end{pmatrix}\bm{x}=\bm{\varphi}\left(\bm{e}_1+\bm{e}_2+2\bm{e}_3\right)
+        \]
+        进一步地,只需要证明线性方程组
+        有解即系数矩阵与增广矩阵的秩相等即可.
+        \[
+            \mathrm{rank}\begin{pmatrix}
+                0 & 1 \\0&1\\1&2
+            \end{pmatrix}=\mathrm{rank}\begin{pmatrix}
+                0 & 1 & -1 \\0&1&-1\\1&2&0
+            \end{pmatrix}=2
+        \]
+        \[
+            \mathrm{rank}\begin{pmatrix}
+                0 & 1 \\0&1\\1&2
+            \end{pmatrix}=\mathrm{rank}\begin{pmatrix}
+                0 & 1 & 2 \\0&1&2\\1&2&4
+            \end{pmatrix}=2
+            \qedhere
+        \]
+    \end{proof}
+}
