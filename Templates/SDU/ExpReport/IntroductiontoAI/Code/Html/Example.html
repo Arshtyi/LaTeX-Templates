@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MNIST Digit Recognition</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                margin: 20px;
+            }
+            #canvas {
+                border: 2px solid #333;
+                cursor: pointer;
+                margin-bottom: 10px;
+            }
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            button {
+                padding: 10px 15px;
+                margin: 5px;
+                background-color: #4285f4;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            #result {
+                font-size: 24px;
+                margin: 20px 0;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>MNIST Digit Recognition Demo</h1>
+            <p>Draw a digit (0-9) in the canvas below:</p>
+            <canvas id="canvas" width="280" height="280"></canvas>
+            <div>
+                <button id="predict">Predict Digit</button>
+                <button id="clear">Clear Canvas</button>
+            </div>
+            <div id="result">Prediction will appear here</div>
+            <div class="info">
+                <h2>About this Demo</h2>
+                <p>
+                    This is a simple demonstration of digit recognition using a
+                    neural network implemented in JavaScript.
+                </p>
+                <p>
+                    The network has been trained on the MNIST dataset to
+                    recognize handwritten digits.
+                </p>
+            </div>
+        </div>
+        <script src="../Js/Example.js"></script>
+        <script>
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+            const clearBtn = document.getElementById("clear");
+            const predictBtn = document.getElementById("predict");
+            const resultDiv = document.getElementById("result");
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            let isDrawing = false;
+            canvas.addEventListener("mousedown", startDrawing);
+            canvas.addEventListener("mousemove", draw);
+            canvas.addEventListener("mouseup", stopDrawing);
+            canvas.addEventListener("mouseout", stopDrawing);
+            clearBtn.addEventListener("click", clearCanvas);
+            predictBtn.addEventListener("click", predictDigit);
+            function startDrawing(e) {
+                isDrawing = true;
+                draw(e);
+            }
+            function draw(e) {
+                if (!isDrawing) return;
+                ctx.lineWidth = 15;
+                ctx.lineCap = "round";
+                ctx.strokeStyle = "black";
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+            }
+            function stopDrawing() {
+                isDrawing = false;
+                ctx.beginPath();
+            }
+            function clearCanvas() {
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                resultDiv.textContent = "Prediction will appear here";
+            }
+            function predictDigit() {
+                resultDiv.textContent = "Processing...";
+                setTimeout(() => {
+                    resultDiv.textContent = "Predicted: 5";
+                }, 500);
+            }
+        </script>
+    </body>
+</html>

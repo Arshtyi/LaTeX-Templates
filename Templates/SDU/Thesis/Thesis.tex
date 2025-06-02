@@ -1,0 +1,36 @@
+\documentclass{../../../Cls/SDU/Thesis/Thesis}
+\usepackage{../../../Styles/SDU/Thesis/Thesis}
+\begin{document}
+\frontmatter
+\setcounter{page}{1}
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \renewcommand{\thepage}{\arabic{page}}
+    \renewcommand{\headrulewidth}{0.5pt}
+    \fancyhead[C]{\zihao{-5}\songti 山东大学本科毕业论文（设计）}
+    \fancyfoot[C]{\zihao{-5}\thepage}
+}
+\pagestyle{plain}
+\input{Others/Coverpage.tex}
+\input{Others/Abstract.tex}
+\input{Others/Contents.tex}
+\mainmatter
+\pagestyle{empty}
+\input{Chapters/Chapter1.tex}
+\input{Chapters/Chapter2.tex}
+\input{Chapters/Chapter3.tex}
+\input{Chapters/Chapter4.tex}
+\input{Chapters/Chapter5.tex}
+\backmatter
+\ctexset{
+    chapter={
+      format=\centering\zihao{-2}\allbfhei,
+      beforeskip=21.6pt,
+      afterskip=18pt,
+      fixskip=true,
+     }
+}
+\input{Others/Bibliography.tex}
+\input{Others/Acknowledgement.tex}
+\input{Others/Appendix.tex}
+\end{document}

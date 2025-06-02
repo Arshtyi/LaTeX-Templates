@@ -1,0 +1,12 @@
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.gz
+*.synctex(busy)
+*.pdf
+*.bcf
+*.run.xml
+*.bbl-SAVE-ERROR

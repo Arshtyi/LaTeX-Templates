@@ -1,0 +1,318 @@
+%===================================================================
+% Shandong University Thesis Style Package
+%===================================================================
+
+%-------------------------------------------------------------------
+% Chapter and Section Format Settings
+%-------------------------------------------------------------------
+\raggedbottom                   % Prevent extra vertical space
+\setcounter{secnumdepth}{3}     % Number headings up to subsubsection level
+
+% Chapter and Section Format Configuration using ctexset
+\ctexset{
+    chapter={
+      format=\centering\zihao{3}\allbfhei,  % Center, size 3, bold Heiti
+      name={第,章},                         % Chapter numbering format (Chinese)
+      beforeskip=21.6pt,                    % Space before chapter title
+      afterskip=18pt,                       % Space after chapter title
+      fixskip=true,                         % Fix spacing issues
+     },
+    section={
+      format=\zihao{4}\allbfhei,            % Size 4, bold Heiti
+      name={},                              % No section prefix
+      beforeskip=18pt,                      % Space before section title
+      afterskip=18pt,                       % Space after section title
+      fixskip=true,                         % Fix spacing issues
+     },
+    subsection={
+            format=\zihao{-4}\allbfhei,           % Size -4, bold Heiti
+            name={},                              % No subsection prefix
+            beforeskip=18pt,                      % Space before subsection title
+            afterskip=18pt,                       % Space after subsection title
+            fixskip=true,                         % Fix spacing issues
+        }
+}
+
+%-------------------------------------------------------------------
+% Reference Shortcuts and Figure Settings
+%-------------------------------------------------------------------
+% Reference Command Shortcuts for Chinese
+\newcommand{\equref}[1]{式\ \eqref{#1}\ }    % Equation reference with Chinese prefix
+\newcommand{\tabref}[1]{表\ \ref{#1}\ }      % Table reference with Chinese prefix
+\newcommand{\figref}[1]{图\ \ref{#1}\ }      % Figure reference with Chinese prefix
+\newcommand{\subfigref}[1]{{图\ \subref*{#1}\ }} % Subfigure reference with Chinese prefix
+
+% Figure Path Configuration
+\graphicspath{{Figure/}}                     % Set default figure search path
+
+% Caption Font Definitions
+\DeclareCaptionFont{mybfsong}{\allbfsong}    % Bold Song font for captions
+\DeclareCaptionFont{mywuhao}{\zihao{5}}      % Size 5 font for captions
+\DeclareSubrefFormat{mysubref}{#1(#2)}       % Custom subfigure reference format
+
+% Figure Caption Settings
+\captionsetup[figure]{
+    position=below,                          % Position caption below figure
+    font={mywuhao,stretch=1.0},             % Caption font size and stretch
+    labelfont=mybfsong,                      % Label font (bold Song)
+    textfont=mybfsong,                       % Text font (bold Song)
+    labelsep=quad,                           % Space between label and text
+    margin=40pt,                             % Margin size
+    belowskip=-4pt,                          % Space below caption
+}
+
+% Table Caption Settings
+\captionsetup[table]{
+    position=above,                          % Position caption above table
+    font={mywuhao,stretch=1.0},             % Caption font size and stretch
+    labelfont=mybfsong,                      % Label font (bold Song)
+    textfont=mybfsong,                       % Text font (bold Song)
+    labelsep=quad,                           % Space between label and text
+    margin=40pt,                             % Margin size
+    belowskip=4pt,                           % Space below caption
+}
+
+% Subfloat Caption Settings
+\captionsetup[subfloat]{
+    position=below,                          % Position caption below subfigure
+    font={mywuhao,stretch=1.0},             % Caption font size and stretch
+    labelfont=mybfsong,                      % Label font (bold Song)
+    textfont=mybfsong,                       % Text font (bold Song)
+    subrefformat=mysubref,                   % Subfigure reference format
+}
+
+%-------------------------------------------------------------------
+% Mathematical Symbol Shortcuts
+%-------------------------------------------------------------------
+\newcommand{\mye}{\ensuremath{\mathrm{e}}}  % Roman e (for natural exponent)
+\newcommand{\myi}{\ensuremath{\mathrm{i}}}  % Roman i (for imaginary unit)
+\newcommand{\myj}{\ensuremath{\mathrm{j}}}  % Roman j (alternative imaginary unit)
+
+%-------------------------------------------------------------------
+% Thesis Metadata Definitions
+%-------------------------------------------------------------------
+\newtoks\Title        % Thesis title
+\newtoks\StudentID    % Student ID number
+\newtoks\Author       % Author name
+\newtoks\Department   % Department name
+\newtoks\Major        % Major field
+\newtoks\Grade        % Grade/year of study
+\newtoks\Teacher      % Supervisor name
+\newtoks\Date         % Submission date
+
+%-------------------------------------------------------------------
+% Cover Page Settings
+%-------------------------------------------------------------------
+% Column width definitions for info table
+\newcommand{\Lwidth}{2.3cm}                 % Left column width
+\newcommand{\Rwidth}{5.5cm}                 % Right column width
+\newcommand{\titlewidth}{0.9\textwidth}     % Title width
+
+% Column formatting commands
+\newcommand{\Lcolumn}[1]{\makebox[\Lwidth][c]{{\zihao{3}\bfkai{#1}}}}  % Left column format
+\newcommand{\Rcolumn}[1]{\makebox[\Rwidth][c]{{\zihao{4}\song{#1}}}}   % Right column format
+
+% Cover page generation command
+\newcommand{\makecoverpage}{
+    \begin{center}
+        % Add PDF bookmark for the cover page
+        \phantomsection
+        \hypertarget{coverpage}{}
+        \bookmark[dest=coverpage,level=0]{封面}
+
+        \vspace*{5mm}
+
+        % University logo
+        \includegraphics[width=0.7\textwidth]{sdu-logo2.pdf}
+
+        \vspace*{10mm}
+
+        % Thesis title heading
+        \includegraphics[width=0.95\textwidth]{sdu-title.pdf}
+
+        \vspace*{5mm}
+
+        % Thesis title label
+        \begin{flushleft}
+            \zihao{3}\bfsong{论文（设计）题目：}
+        \end{flushleft}
+
+        \vspace*{10mm}
+
+        % Thesis title
+        \begin{minipage}{\titlewidth}
+            \centering
+            \zihao{-2}\bfhei{\the\Title}
+        \end{minipage}
+
+        \vspace*{30mm}
+
+        % Author information table
+        \begin{tabular}{p{\Lwidth}p{\Rwidth}}
+            \Lcolumn{姓\qquad 名} & \Rcolumn{\the\Author}     \\[-0.8mm]\cline{2-2}\\[-4mm]
+            \Lcolumn{学\qquad 号} & \Rcolumn{\the\StudentID}  \\[-0.8mm]\cline{2-2}\\[-4mm]
+            \Lcolumn{学\qquad 院} & \Rcolumn{\the\Department} \\[-0.8mm]\cline{2-2}\\[-4mm]
+            \Lcolumn{专\qquad 业} & \Rcolumn{\the\Major}      \\[-0.8mm]\cline{2-2}\\[-4mm]
+            \Lcolumn{年\qquad 级} & \Rcolumn{\the\Grade}      \\[-0.8mm]\cline{2-2}\\[-4mm]
+            \Lcolumn{指导教师}      & \Rcolumn{\the\Teacher}    \\[-0.8mm]\cline{2-2}
+        \end{tabular}
+
+        \vspace*{25mm}
+
+        % Submission date
+        \zihao{4}\song{\the\Date}
+    \end{center}
+
+    \clearpage
+}
+
+%-------------------------------------------------------------------
+% Abstract Environment Definitions
+%-------------------------------------------------------------------
+% English Abstract Environment
+\newenvironment{enabstract}{
+    % Add PDF bookmark for English abstract
+    \phantomsection
+    \hypertarget{enabstract}{}
+    \bookmark[dest=enabstract,level=0]{英文摘要}
+
+    \vspace*{12pt}
+    \centerline{\zihao{-2}\textbf{ABSTRACT}}  % English abstract heading
+    \vspace*{12pt}
+
+    \setlength{\parindent}{1.2em}  % Paragraph indentation
+    \zihao{-4}                     % Font size for abstract text
+}{
+    \clearpage  % End page after abstract
+}
+
+% Chinese Abstract Environment
+\newenvironment{cnabstract}{
+    % Add PDF bookmark for Chinese abstract
+    \phantomsection
+    \hypertarget{cnabstract}{}
+    \bookmark[dest=cnabstract,level=0]{中文摘要}
+
+    \vspace*{12pt}
+    \centerline{\zihao{-2}\bfhei{摘\quad 要}}  % Chinese abstract heading
+    \vspace*{12pt}
+
+    \setlength{\parindent}{1.2em}  % Paragraph indentation
+    \zihao{-4}                     % Font size for abstract text
+}{
+    \clearpage  % End page after abstract
+}
+
+% Keywords Commands
+\newcommand{\enkeywords}[1]{
+    \vspace{1cm}
+    \noindent{\zihao{-4}\textbf{Key Words}:}  % English keywords label
+    {#1}  % English keywords content
+}
+
+\newcommand{\cnkeywords}[1]{
+    \vspace{1cm}
+    \noindent{\zihao{-4}\bfhei{关键词}：}  % Chinese keywords label
+    {#1}  % Chinese keywords content
+}
+
+%-------------------------------------------------------------------
+% Table of Contents Settings
+%-------------------------------------------------------------------
+\newcommand{\maketable}{
+    % Prevent forced new right page for chapters
+    \renewcommand{\cleardoublepage}{\clearpage}
+
+    % Page number format settings
+    \setcounter{page}{1}  % Start page numbering from 1
+    \fancypagestyle{plain}{
+        \fancyhf{}  % Clear all header/footer fields
+        \renewcommand{\thepage}{\Roman{page}}  % Roman numerals for front matter
+        \renewcommand{\headrulewidth}{0pt}     % No header rule
+        \fancyfoot[C]{\zihao{-5}\thepage}      % Center footer with page number
+    }
+    \pagestyle{plain}  % Apply the plain page style
+
+    % Table of contents format settings
+    \renewcommand{\contentsname}{目\quad 录}                 % TOC title in Chinese
+    \renewcommand{\cfttoctitlefont}{\hfill\allbfhei\zihao{-2}}  % TOC title font
+    \renewcommand{\cftaftertoctitle}{\hfill}                 % Center TOC title
+    \renewcommand{\cftbeforetoctitleskip}{12pt}              % Space before TOC title
+    \renewcommand{\cftaftertoctitleskip}{12pt}               % Space after TOC title
+    \renewcommand{\cftdotsep}{1.5}                           % Dot spacing in TOC
+    \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}   % Chapter dotted leaders
+
+    % Add PDF bookmark for table of contents
+    \phantomsection
+    \hypertarget{tableofcontent}{}
+    \bookmark[dest=tableofcontent,level=0]{目录}
+
+    \tableofcontents  % Generate table of contents
+}
+
+%-------------------------------------------------------------------
+% Bibliography Settings
+%-------------------------------------------------------------------
+\addbibresource{Ref.bib}  % Bibliography source file
+
+\renewcommand{\bibfont}{\zihao{5}}  % Bibliography font size
+
+% Print bibliography command
+\newcommand{\printbib}{
+    \newpage
+    \setstretch{1}  % Single line spacing for references
+
+    % Add bibliography to table of contents
+    \phantomsection
+    \addcontentsline{toc}{chapter}{参考文献}
+
+    % Bibliography heading
+    \chapter*{参考文献}
+
+    % Print bibliography without heading (already added above)
+    \printbibliography[heading=none]
+}
+
+%-------------------------------------------------------------------
+% Acknowledgement and Appendix Environments
+%-------------------------------------------------------------------
+% Acknowledgement Environment
+\newenvironment{myacknowledgement}{
+    \newpage
+    \setstretch{1.5}  % 1.5 line spacing for acknowledgement
+
+    % Add acknowledgement to table of contents
+    \phantomsection
+    \addcontentsline{toc}{chapter}{致谢}
+
+    % Acknowledgement heading
+    \chapter*{致\quad 谢}
+
+    \zihao{-4}  % Font size for acknowledgement text
+}{
+    \clearpage  % End page after acknowledgement
+}
+
+% Appendix Environment
+\newenvironment{myappendix}{
+    \newpage
+    \setstretch{1.5}  % 1.5 line spacing for appendix
+
+    % Add appendix to table of contents
+    \phantomsection
+    \addcontentsline{toc}{chapter}{附录}
+
+    % Appendix heading
+    \chapter*{附\quad 录}
+
+    \zihao{-4}  % Font size for appendix text
+
+    \appendix  % Switch to appendix mode
+
+    % Customize appendix numbering for equations, tables and figures
+    \renewcommand{\theequation}{A.\arabic{equation}}  % A.1, A.2, etc. for equations
+    \renewcommand{\thetable}{A.\arabic{table}}        % A.1, A.2, etc. for tables
+    \renewcommand{\thefigure}{A.\arabic{figure}}      % A.1, A.2, etc. for figures
+}{
+    \clearpage  % End page after appendix
+}

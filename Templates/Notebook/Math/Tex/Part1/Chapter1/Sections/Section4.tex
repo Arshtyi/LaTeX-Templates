@@ -1,0 +1,446 @@
+\newpage
+\section{线性映射的像与核}
+\rem{}{}{
+总设线性映射$\bm{\varphi}:V_{\mathbb{K}}^n\longrightarrow U_{\mathbb{K}}^m \in
+    \mathcal{L}\left(V,U\right)$.
+}
+\subsection{像空间与核空间}
+\dfn{像集与核集}{像集与核集}{
+    线性映射的像集定义为
+    \[
+        \mathrm{Im}\, \bm{\varphi}=\left\{
+        \bm{\varphi}\left(\bm{v}\right)\mid
+        \bm{v} \in V
+        \right\}\subseteq U
+    \]
+    核集定义为
+    \[
+        \mathrm{Ker}\,\bm{\varphi}=
+        \left\{\bm{v}\in V \mid \bm{\varphi}\left(\bm{v}\right)=\bm{0}_{U}\right\}\subseteq V
+    \]
+
+    二者都显然非空.
+}
+\lem{像空间与核空间}{像空间与核空间}{
+    线性映射$\bm{\varphi}$在\cref{def:像集与核集}定义下的像集
+    $\mathrm{Im}\,\bm{\varphi}$是$U$的子空间,
+    称为像空间；
+    核集$\mathrm{Ker}\,\bm{\varphi}$是$V$的子空间,称为核空间.
+    \begin{proof}
+        任取$\bm{\varphi}\left(\bm{v}\right)$、$\bm{\varphi}\left(\bm{u}\right)\in \mathrm{Im}\,\bm{\varphi}$,
+        $\bm{v}$、$\bm{u}\in V$. 于是
+        $\bm{\varphi}\left(\bm{v}\right)+\bm{\varphi}\left(\bm{u}\right)=\bm{\varphi}\left(
+            \bm{v}+\bm{u}
+            \right)\in \mathrm{Im}\,\bm{\varphi}$. $\forall k\in \mathbb{K}$,
+        则$k\bm{\varphi}\left(\bm{v}\right)=\bm{\varphi}\left(k\bm{v}\right)\in\mathrm{Im}\,\bm{\varphi}$.
+
+        任取$\bm{\varphi}\left(\bm{v}\right)$、$\bm{\varphi}\left(\bm{u}\right)\in \mathrm{Ker}\,\bm{\varphi}$,
+        即$\bm{\varphi}\left(\bm{v}\right)=\bm{\varphi}\left(\bm{u}\right)=\bm{0}$.
+        则$\bm{\varphi}\left(
+            \bm{v}+\bm{u}
+            \right)=\bm{\varphi}\left(\bm{v}\right)+\bm{\varphi}\left(
+            \bm{u}
+            \right)=\bm{0}\Longrightarrow
+            \bm{v}+\bm{u}\in \mathrm{Ker}\,\bm{\varphi}$.
+        $\forall k\in\mathbb{K}$,$\bm{\varphi}\left(
+            k\bm{v}
+            \right)=k\bm{\varphi}\left(
+            \bm{v}
+            \right)=\bm{0}\Longrightarrow
+            k\bm{v}\in \mathrm{Ker}\,\bm{\varphi}$.
+    \end{proof}
+}
+\rem{}{}{
+    一般也称核空间为零空间,记作$\mathrm{Null}\,\left(\bm{T}\left(\bm{\varphi}\right)\right)$.
+}
+\pro{}{像空间与核空间对线性映射的刻画}{
+    \[
+        \begin{cases*}
+            \bm{\varphi}\text{为满射}\Longleftrightarrow \dim \mathrm{Im}\,\bm{\varphi}=\dim U\Longleftrightarrow \mathrm{Im}\,\bm{\varphi}
+            \text{是}U\text{的全子空间} \\
+            \bm{\varphi}\text{为单射}\Longleftrightarrow \mathrm{Ker}\,\bm{\varphi}=0\Longleftrightarrow
+            \dim \mathrm{Ker}\,\bm{\varphi}=0\Longleftrightarrow \mathrm{Ker}\,\bm{\varphi}\text{是}
+            V\text{的零子空间}
+        \end{cases*}\]
+    \begin{proof}
+        因为$\bm{\varphi}$满射等价于$U=\mathrm{Im}\,\bm{\varphi}$,
+        也等价于$\dim\,U=\dim\,\mathrm{Im}\,\bm{\varphi}$（因为子空间）,
+        则为全子空间.
+
+        一方面,设$\bm{\varphi}$为单射,任取$\bm{v}\in \mathrm{Ker}\,\bm{\varphi}$,
+        即$\bm{\varphi}\left(\bm{v}\right)=\bm{0}_U=
+            \bm{\varphi}\left(\bm{0}_V\right)$,则$\bm{v}=\bm{0}$,
+        即$\mathrm{Ker}\,\bm{\varphi}=0$.
+
+        另一方面,
+        设$\bm{\varphi}\left(\bm{v}\right)=\bm{\varphi}\left(\bm{u}\right)$,
+        $\bm{v}$、$\bm{u}\in V$. 移项即有
+        $\bm{\varphi}\left(\bm{v}-\bm{u}\right)=
+            \bm{0}$即
+        $\bm{v}-\bm{u}\in \mathrm{Ker}\,\bm{\varphi}$. 故
+        $\bm{v}-\bm{u}=\bm{0}$即$\bm{v}=\bm{u}$.
+    \end{proof}
+}
+\dfn{秩与零度}{秩与零度}{
+    定义$\bm{\varphi}$的秩为$\mathrm{r}\left(\bm{\varphi}\right)=
+        \mathrm{rank}\left(\bm{\varphi}
+        \right)=\dim \mathrm{Im}\,\bm{\varphi}$,零度（或者叫零化度）
+    为$\dim \mathrm{Ker}\,\bm{\varphi}$.
+}
+\lem{}{幂的像空间与核空间}{
+    像空间和核空间各自与$V$有如下关系
+    \begin{align*}
+         & V\supseteq \mathrm{Im}\,\bm{\varphi}\supseteq \mathrm{Im}\,\bm{\varphi}^2\supseteq \cdots   \\
+         & \mathrm{Ker}\,\bm{\varphi}\subseteq \mathrm{Ker}\,\bm{\varphi}^2\subseteq \cdots\subseteq V
+    \end{align*}\begin{proof}
+        只需注意到$\bm{\varphi}^2\left(\bm{v}\right)=\bm{\varphi}\left(\bm{\varphi}\left(\bm{v}\right)\right)\in \mathrm{Im}\,\bm{\varphi},
+            \bm{\varphi}^2\left(\bm{v}\right)=\bm{\varphi}\left(\bm{\varphi}\left(\bm{v}\right)\right)=\bm{\varphi}\left(\bm{0}\right)=\bm{0}$.
+    \end{proof}
+}
+\subsection{限制}
+\dfn{}{线性映射的限制}{
+    设线性映射$\bm{\varphi}:V\longrightarrow U$,且
+    $V'$为$V$的子空间,$U'$为$U$的子空间,满足
+    \[
+        \bm{\varphi}\left(V'\right)\subseteq U'
+    \]
+    则一定可以通过限制定义域得到与$\bm{\varphi}$
+    具有相同映射法则的线性映射
+    \[
+        \bm{\varphi}':V'\longrightarrow U'
+    \]
+    称为$\bm{\varphi}$在$V'$上的一个限制.
+}
+\lem{}{限制单射的继承}{
+    若$\bm{\varphi}$为单射,则其限制
+    $\bm{\varphi}'$也是单射.
+    \begin{proof}
+        定义\begin{align*}
+            \bm{\varphi}':V' & \longrightarrow U'                           \\
+            \bm{v}'          & \longmapsto \bm{\varphi}\left(\bm{v}'\right)
+        \end{align*}
+        与$\bm{\varphi}$有
+        相同的映
+        射法则.
+
+        任取$\bm{v}'_1,\bm{v}'_2\in V',k\in \mathbb{K}$,则
+        \begin{align*}
+            \bm{\varphi}'\left(\bm{v}'_1+\bm{v}'_2\right) & =\bm{\varphi}\left(\bm{v}_1'\right)+\bm{\varphi}\left(\bm{v}'_2\right)   \\
+                                                          & =\bm{\varphi}'\left(\bm{v}'_1\right)+\bm{\varphi}'\left(\bm{v}_2'\right)
+        \end{align*}
+        且
+        \begin{align*}
+            \bm{\varphi}'\left(k\bm{v}_1'\right)=\bm{\varphi}\left(k\bm{v}_1'\right)=k\bm{\varphi}'\left(\bm{v}_1'\right)
+        \end{align*}
+        因此$\bm{\varphi}'$是一个线性映射.
+
+        设$\bm{\varphi}$是单射则
+        $\mathrm{Ker}\,\bm{\varphi}=0$. 则容易有：
+        \begin{align*}
+            \mathrm{Ker}\,\bm{\varphi}' & =\left\{\bm{v}'\in V'\mid\bm{\varphi}'\left(\bm{v}'\right)=\bm{0}\right\} \\
+                                        & =\left\{\bm{v}'\in V'\mid\bm{\varphi}\left(\bm{v}'\right)=\bm{0}\right\}  \\
+                                        & =\mathrm{Ker}\,\bm{\varphi}\cap V'=0\qedhere
+        \end{align*}
+    \end{proof}
+}
+\exa{}{}{
+一个简单的例子是考虑$V=\mathbb{R}^2$,定义映射
+$\bm{\varphi}$为绕原点逆时针旋转$\theta$角,那么
+\[
+    \left(\bm{\varphi}\left(\bm{e}_1\right),\bm{\varphi}\left(\bm{e}
+        _2\right)\right)=\left(\bm{e}_1,\bm{e}_2\right)\begin{bmatrix}
+        \cos \theta & -\sin \theta \\
+        \sin \theta & \cos\theta
+    \end{bmatrix}
+\]
+那么考虑$V'$为$x$轴,$U'$为$\theta$角轴,
+显然$\bm{\varphi}\left(V'\right)\subseteq U'$,于是得到限制
+\[
+    \bm{\varphi}'\Big |_{V'}:V'\longrightarrow U'
+\]
+容易证明它是双射.
+}
+\subsection{线性映射与矩阵}
+\thm{}{像空间与核空间的维数}{
+    设线性映射
+    $\bm{\varphi}:V^n\longrightarrow U^m $,设$V$的一组基为
+    $\left\{\bm{e}_1,\bm{e}_2,\cdots,\bm{e}_n\right\}$,
+    $U$的一组基为$\left\{\bm{f}_1,\bm{f}_2,\cdots,\bm{f}_m
+        \right\}$,设$\bm{\varphi}$在给定基下的表示矩阵
+    $\bm{A}\in M_{m\times n}\left(\mathbb{K}
+        \right)$,则有
+    \[
+        \dim \mathrm{Im}\,\bm{\varphi}=\mathrm{r}\left(\bm{A}\right)
+        ,
+        \dim \mathrm{Ker}\,\bm{\varphi}=n-\mathrm{r}\left(\bm{A}\right)
+    \]
+    第二个式子也叫作秩-零化度定理,它表明任何矩阵的秩
+    与其零化度之和等于这个矩阵的列向量个数.
+    \begin{proof}
+        首先给出交换图 \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+        \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+            %uncomment if require: \path (0,2503); %set diagram left start at 0, and has height of 2503
+
+            %Straight Lines [id:da5059046053326136] 
+            \draw    (142.4,2119) -- (368.4,2119) ;
+            \draw [shift={(370.4,2119)}, rotate = 180] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+            %Straight Lines [id:da886427385416552] 
+            \draw    (122.4,2131) -- (122.4,2259) ;
+            \draw [shift={(122.4,2261)}, rotate = 270] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+            %Straight Lines [id:da932053286719003] 
+            \draw    (140.4,2272) -- (369.4,2271.01) ;
+            \draw [shift={(371.4,2271)}, rotate = 179.75] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+            %Straight Lines [id:da19381900704449317] 
+            \draw    (388.4,2132) -- (388.4,2256) ;
+            \draw [shift={(388.4,2258)}, rotate = 270] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+            %Curve Lines [id:da007992020593677651] 
+            \draw    (140.4,2129) .. controls (241.89,2136.96) and (311.7,2182.54) .. (371.5,2256.88) ;
+            \draw [shift={(372.4,2258)}, rotate = 231.34] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+            % Text Node
+            \draw (115,2114.4) node [anchor=north west][inner sep=0.75pt]    {$V^{n}$};
+            % Text Node
+            \draw (380,2114.4) node [anchor=north west][inner sep=0.75pt]    {$U^{m}$};
+            % Text Node
+            \draw (240,2089.4) node [anchor=north west][inner sep=0.75pt]    {$\bm{\varphi}$};
+            % Text Node
+            \draw (112,2267.4) node [anchor=north west][inner sep=0.75pt]    {$\mathbb{K}^{n}$};
+            % Text Node
+            \draw (377,2265.4) node [anchor=north west][inner sep=0.75pt]    {$\mathbb{K}^{m}$};
+            % Text Node
+            \draw (134,2182.4) node [anchor=north west][inner sep=0.75pt]    {$\bm{\eta}_{V}$};
+            % Text Node
+            \draw (403,2183.4) node [anchor=north west][inner sep=0.75pt]    {$\bm{\eta}_{U}$};
+            % Text Node
+            \draw (237,2240.4) node [anchor=north west][inner sep=0.75pt]    {$\bm{\varphi}_{\bm{A}}$};
+
+        \end{tikzpicture}
+        总的来说,需要证明
+        \[
+            \mathrm{Ker}\,\bm{\varphi}\cong \mathrm{Ker}\,\bm{\varphi}_{\bm{A}},
+            \mathrm{Im}\,\bm{\varphi}\cong \mathrm{Im}\,\bm{\varphi}_{\bm{A}}
+        \]
+
+        即构造线性映射并证明是线性同构.
+
+        第一步,证明：
+        \[
+            \bm{\eta}_V\left(\mathrm{Ker}\,\bm{\varphi}
+            \right)\subseteq \mathrm{Ker}\,\bm{\varphi}_{\bm{A}},
+            \bm{\eta}_U\left(\mathrm{Im}\,\bm{\varphi}
+            \right)\subseteq \mathrm{Im}\,\bm{\varphi}_{\bm{A}}
+        \]
+
+        一方面,证明$\bm{\eta}_V\left(\mathrm{Ker}\,\bm{\varphi}
+            \right)\subseteq \mathrm{Ker}\,\bm{\varphi}_{\bm{A}}$
+        . 任取$\bm{v}\in \mathrm{Ker}\,\bm{\varphi}$,
+        要证$\bm{\eta}_V\left(
+            \mathrm{Ker}\,\bm{\varphi}
+            \right)\in \mathrm{Ker}\,\bm{\varphi}
+            _{\bm{A}}$. 因为$\bm{\varphi}_{\bm{A}}\left(\bm{\eta}_V\left(\bm{v}\right)\right)=
+            \bm{\eta}_U\left(\bm{\varphi}\left(\bm{v}\right)\right)=\bm{\varphi}_U\left(\bm{0}\right)=\bm{0}$.
+        得证. 另一方面,证明
+        $\bm{\eta}_U\left(\mathrm{Im}\,\bm{\varphi}
+            \right)\subseteq \mathrm{Im}\,\bm{\varphi}_{\bm{A}}
+        $,
+        任取$\bm{\varphi}\left(\bm{v}\right)\in \mathrm{Im}\,\bm{\varphi},
+            \bm{v}\in V$,要证$ \bm{\eta}_U\left(\bm{\varphi}\left(\bm{v}\right)\right)\in \mathrm{Im}\,\bm{\varphi}_{\bm{A}}$.
+        因为$\bm{\eta}_U\left(\bm{\varphi}\left(\bm{v}\right)\right)=
+            \bm{\varphi}_{\bm{A}}\left(\bm{\eta}_V\left(\bm{v}\right)\right)\in \mathrm{Im}\,\bm{\varphi}_{\bm{A}}
+        $. 得证.
+
+        第二步,做限制.
+        \begin{align*}
+             & \bm{\eta}_V:\mathrm{Ker}\,\bm{\varphi}\longrightarrow \mathrm{Ker}\,\bm{\varphi}_{\bm{A}} \\
+             & \bm{\eta}_U:\mathrm{Im}\,\bm{\varphi}\longrightarrow \mathrm{Im}\,\bm{\varphi}_{\bm{A}}
+        \end{align*}
+        都是单的线性映射. 再证满性即可证明同构.
+
+        先证$\bm{\eta}_V:\mathrm{Ker}\,\bm{\varphi}\longrightarrow \mathrm{Ker}\,
+            \bm{\varphi}_{\bm{A}}$是满的. 任取$\bm{x}\in \mathrm{Ker}\,\bm{\varphi}_{\bm{A}}$,
+        即$\bm{\varphi}_{\bm{A}}\left(\bm{x}\right)=\bm{0}$. 因为
+        $\mathrm{Ker}\,\bm{\varphi}_{\bm{A}}\subseteq \mathbb{K}^n$且
+        $\bm{\eta}_V:V\longrightarrow \mathbb{K}^n$是满射. 故$\exists \bm{v}\in V$,
+        s.t.$\bm{\eta}_V\left(\bm{v}\right)=\bm{x}$,只需证$\bm{v}\in \mathrm{Ker}\,\bm{\varphi}$即证明
+        $\bm{\varphi}\left(\bm{v}\right)=\bm{0}$. 由交换图$\bm{\eta}_U\left(\bm{\varphi}\left(\bm{v}\right)\right)=
+            \bm{\varphi}_{\bm{A}}\left(\bm{\eta}_V\left(\bm{v}\right)\right)=\bm{\varphi}_{\bm{A}}\left(\bm{x}\right)=\bm{0}=\bm{\eta}_U\left(\bm{0}\right)$,故
+        $\bm{\varphi}\left(\bm{v}\right)=\bm{0}$. 证毕.
+
+        再证$\bm{\eta}_U:\mathrm{Im}\,\bm{\varphi}\longrightarrow \mathrm{Im}\,
+            \bm{\varphi}_{\bm{A}}$是满的. 任取$\bm{\varphi}_{\bm{A}}\left(\bm{x}\right)\in \mathrm{Im}\,\bm{\varphi}_{\bm{A}},\bm{x}\in \mathbb{K}^n$.
+        因为$\exists \bm{v}\in V$,s.t.$\bm{\eta}_V\left(\bm{v}\right)=\bm{x}$. 于是
+        $\bm{\eta}_U\left(\bm{\varphi}\left(\bm{v}\right)\right)=\bm{\varphi}_{\bm{A}}\left(\bm{\eta}_V\left(\bm{v}\right)\right)=\bm{\varphi}_{\bm{A}}\left(\bm{x}\right)$. 得证.
+
+        同构得证.
+
+        第三步. 因为
+        \[
+            \mathrm{Ker}\,\bm{\varphi}_{\bm{A}}
+            =\left\{\bm{x}\in \mathbb{K}^n\mid\bm{Ax}=\bm{0}
+            \right\}
+        \]
+        即$\bm{Ax}=\bm{0}$的解空间$V_{\bm{A}}$. 因为
+        上面已证同构$\mathrm{Ker}\,\bm{\varphi}\cong \mathrm{Ker}\,\bm{\varphi}_{\bm{A}}$,故
+        \[
+            \dim\,\mathrm{Ker}\,\bm{\varphi}=\dim\,\mathrm{Ker}\,\bm{\varphi}_{\bm{A}}=\dim\,V_{\bm{A}}=n-\mathrm{r}\left(\bm{A}
+            \right)
+        \]
+        然后作列分块$\bm{A}=\left(\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_n\right),\bm{\alpha}_i\in \mathbb{K}^n$.
+        故
+        \begin{align*}
+            \mathrm{Im}\,\bm{\varphi}_{\bm{A}} & =\left\{
+            \bm{Ax}\mid\bm{x}=\left(x_1,x_2,\cdots,x_n\right)'\in \mathbb{K}^n
+            \right\}                                                                                             \\
+                                               & =\left\{x_1\bm{\alpha}_1+x_2\bm{\alpha}_2+\cdots+
+            x_n\bm{\alpha}_n\mid x_i\in \mathbb{K}\right\}                                                       \\
+                                               & =L\left(\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_n\right)
+        \end{align*}
+        因为$\mathrm{Im}\,\bm{\varphi}\cong \mathrm{Im}\,\bm{\varphi}_{\bm{A}}$,
+        于是
+        \begin{align*}
+            \mathrm{r}\left(\bm{\varphi}\right) & =\dim\,\mathrm{Im}\,\bm{\varphi}=\dim\,\mathrm{Im}\,\bm{\varphi}_{\bm{A}}                  \\
+                                                & =\dim\,L\left(\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_n\right)
+            \\
+                                                & =\mathrm{rank}\left(\left\{\bm{\alpha}_1,\bm{\alpha}_2,\cdots,\bm{\alpha}_n\right\}\right) \\
+                                                & =\mathrm{r}\left(\bm{A}\right)
+        \end{align*}
+
+        于是本定理证毕.
+    \end{proof}
+}
+\cor{线性映射维数公式}{线性映射维数公式}{
+    设$\bm{\varphi}\in \mathcal{L}\left(V^n,U^m\right)$,则
+    \[\dim \mathrm{Im}\,\bm{\varphi}+\dim
+        \mathrm{Ker}\,\bm{\varphi}=\dim\,V=n
+    \]
+}
+\cor{}{秩对线性映射的刻画}{
+    设$\bm{\varphi}\in \mathcal{L}\left(V^n,U^m\right)$,则
+    \[
+        \begin{cases*}
+            \bm{\varphi}\text{为满射}\Longleftrightarrow
+            \bm{A}\text{行满秩},\mathrm{r}\left(\bm{A}\right)=m \\
+            \bm{\varphi}\text{为单射}\Longleftrightarrow
+            \bm{A}\text{列满秩},\mathrm{r}\left(\bm{A}\right)=n
+        \end{cases*}
+    \]\begin{proof}
+        因为$\bm{\varphi}$为满射等价于$\dim\,\mathrm{Im}\,\bm{\varphi}=\dim\,U$,$\bm{\varphi}$为单射等价于
+        $\dim\,\mathrm{Ker}\,\bm{\varphi}=0$. 于是得证.
+    \end{proof}
+}
+\cor{}{同维的刻画}{
+    设线性映射$\bm{\varphi}:V^n\longrightarrow U^n$且
+    $\dim V=\dim U = n$,则
+    \[
+        \bm{\varphi}\text{是同构}\Longleftrightarrow
+        \bm{\varphi}\text{是满射}\Longleftrightarrow
+        \bm{\varphi}\text{是单射}
+    \]
+    特别地,线性变换$\bm{\varphi}\in \mathcal{L}\left(
+        V^n
+        \right)$,则$\bm{\varphi}$是自同构等价于$\bm{\varphi}$
+    是单射也等价于$\bm{\varphi}$是满射.\begin{proof}
+        利用\cref{cor:线性映射维数公式}维数公式易得.
+    \end{proof}
+}
+\subsection{像空间与核空间的计算}
+\rem{}{}{
+    先说明记号,设有映射$\bm{\varphi}\in \mathcal{L}\left(V^n,U^m\right)$,分别取定线性空间$V$和$U$的一组基为
+    $\left\{\bm{e}_1,\bm{e}_2,\cdots,\bm{e}_n\right\}$和$\left\{\bm{f}_1,\bm{f}_2,\cdots,\bm{f}_m\right\}$,
+    $\bm{T}\left(\bm{\varphi}\right)=\bm{A}$,
+    且有线性同构
+    \begin{align*}
+        \bm{\eta}_V:\mathrm{Ker}\,\bm{\varphi} & \longrightarrow \mathrm{Ker}\,\bm{\varphi}_{\bm{A}} \\
+        \bm{v}                                 & \longmapsto \begin{pmatrix}
+                                                                 x_1 \\x_2\\\vdots\\x_n
+                                                             \end{pmatrix}
+    \end{align*}
+    \begin{align*}
+        \bm{\eta}_U:\mathrm{Im}\,\bm{\varphi} & \longrightarrow \mathrm{Im}\,\bm{\varphi}_{\bm{A}} \\
+        \bm{u}                                & \longmapsto \begin{pmatrix}
+                                                                y_1 \\y_2\\\vdots\\y_m
+                                                            \end{pmatrix}
+    \end{align*}
+    及对应逆映射
+    %\newpage
+    \begin{align*}
+        \bm{\eta}_V^{-1}:\mathrm{Ker}\,\bm{\varphi}_{\bm{A}} & \longrightarrow \mathrm{Ker}\,\bm{\varphi} \\
+        \begin{pmatrix}
+            x_1 \\x_2\\\vdots\\x_n
+        \end{pmatrix}                               & \longmapsto
+        x_1\bm{e}_1+x_2\bm{e}_2+\cdots+x_n\bm{e}_n
+    \end{align*}
+    \begin{align*}
+        \bm{\eta}_U^{-1}:\mathrm{Im}\,\bm{\varphi}_{\bm{A}} & \longrightarrow \mathrm{Im}\,\bm{\varphi} \\
+        \begin{pmatrix}
+            y_1 \\y_2\\\vdots\\y_m
+        \end{pmatrix}                              & \longmapsto
+        y_1\bm{f}_1+y_2\bm{f}_2+\cdots+y_m\bm{f}_m
+    \end{align*}
+}考虑如何计算得到像空间与核空间.
+\rem{}{}{
+$\mathrm{Ker}\,\bm{\varphi}_{\bm{A}}$是$\bm{Ax}=\bm{0}$的解空间,
+$\mathrm{Im}\,\bm{\varphi}_{\bm{A}}$是$\bm{A}$的列向量
+张成的子空间.
+}
+
+首先对表示矩阵$\bm{A}$作初等行变换（必要时用列对换），得到列向量组的极大无关组$\left\{
+    \bm{\alpha}_{i_1},\bm{\alpha}_{i_2},\cdots,\bm{\alpha}_{i_r}
+    \right\}$，$r=\mathrm{r}\left(\bm{A}\right)$，得到
+方程$\bm{Ax}=\bm{0}$的基础解系$\bm{\beta}_1,\bm{\beta}_2,\cdots,\bm{\eta}_{n-r}$.
+最后得出
+\[
+    \mathrm{Ker}\,\bm{\varphi}=k_1\bm{\eta}_V^{-1}\left(\bm{\beta}_1\right)+
+    k_2\bm{\eta}_V^{-1}\left(\bm{\beta}_2\right)+\cdots+
+    k_{n-r}\bm{\eta}_V^{-1}\left(\bm{\beta}_{n-r}\right),k_i \in \mathbb{K}
+\]
+\[
+    \mathrm{Im}\,\bm{\varphi}=l_1\bm{\eta}_U^{-1}\left(\bm{\alpha}_{i_1}\right)+
+    l_2\bm{\eta}_U^{-1}\left(\bm{\alpha}_{i_2}\right)
+    +\cdots+
+    l_r\bm{\eta}_U^{-1}\left(\bm{\alpha}_{i_r}\right),l_j \in \mathbb{K}
+\]
+\exa{}{}{
+    设线性映射$\bm{\varphi}:V^5\longrightarrow U^4$,其在给定基$V:\left\{
+        \bm{e}_1,\bm{e}_2,\cdots,\bm{e}_5
+        \right\}$和$U:\left\{
+        \bm{f}_1,\bm{f}_2,\bm{f}_3,\bm{f}_4
+        \right\}$下的表示矩阵为
+    \begin{align*}
+        \bm{A} & =\begin{pmatrix}
+                      1 & 2 & 1  & -3  & 2  \\
+                      2 & 1 & 1  & 1   & -3 \\
+                      1 & 1 & 2  & 2   & -2 \\
+                      2 & 3 & -5 & -17 & 10
+                  \end{pmatrix} \\
+               & \longrightarrow
+        \begin{pmatrix}
+            1 & 0 & 0 & 1  & -\cfrac{9}{4} \\
+            0 & 1 & 0 & -3 & \cfrac{11}{4} \\
+            0 & 0 & 1 & 2  & -\cfrac{5}{4} \\
+            0 & 0 & 0 & 0  & 0
+        \end{pmatrix}
+    \end{align*}则$\bm{\alpha}_1=\left(1,2,1,2\right)',\left(2,1,1,3\right)',\left(1,1,2,-5\right)'$. 于是\[
+        \mathrm{Im}\,\bm{\varphi}=k_1\left(
+        \bm{f}_1+2\bm{f}_2+\bm{f}_3+2\bm{f}_4
+        \right)+k_2\left(
+        2\bm{f}_1+\bm{f}_2+\bm{f}_3+3\bm{f}_4
+        \right)+k_3\left(
+        \bm{f}_1+\bm{f}_2+2\bm{f}_3-5\bm{f}_4
+        \right)
+    \]又因为基础解系
+    \[
+        \bm{\beta}_1=\begin{pmatrix}
+            -1 \\3\\-2\\1\\0
+        \end{pmatrix},\bm{\beta}_2=\begin{pmatrix}
+            9 \\-11\\5\\0\\4
+        \end{pmatrix}
+    \]于是\[
+        \mathrm{Ker}\,\bm{\varphi}=l_1\left(
+        -\bm{e}_1+3\bm{e}_2-2\bm{e}_3+\bm{e}_4
+        \right)+l_2\left(
+        9\bm{e}_1-11\bm{e}_2+5\bm{e}_3+4\bm{e}_5
+        \right)
+    \]
+}

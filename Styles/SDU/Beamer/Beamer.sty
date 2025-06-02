@@ -1,0 +1,237 @@
+% Beamer Style File - Refactored for Clarity and Grouped Functionality
+
+% --- 1. Language and Localization ---
+\usepackage[english]{babel} % Set primary language to English for hyphenation patterns, date formats etc.
+
+% --- 2. Font Settings ---
+\usepackage{fontspec} % Required for using system fonts (TrueType, OpenType) with XeLaTeX/LuaLaTeX
+\setsansfont[ % Configure the main sans-serif font used by Beamer (e.g., for headings, titles)
+    Path = ../../../Fonts/Microsoft/, % Relative path to the font directory
+    Extension = .ttf, % Font file extension
+    BoldFont = {Microsoft YaHei Bold}, % Specify the bold variant
+    ItalicFont = {Microsoft YaHei Italic}, % Specify the italic variant
+    UprightFont = {Microsoft YaHei} % Specify the regular (upright) variant
+]{Microsoft YaHei} % Define 'Microsoft YaHei' as the sans-serif font family name
+\setCJKmainfont{SimSun} % Set the default font for CJK (Chinese, Japanese, Korean) characters - SimSun
+% \setCJKmainfont{SimHei} % Alternative CJK font - SimHei (commented out)
+\usefonttheme{professionalfonts} % Use Beamer's theme for professional font handling (avoids some default substitutions)
+
+% --- 3. Math Packages ---
+\usepackage{amsmath}   % Core AMS package for advanced math environments (align, gather, etc.)
+\usepackage{amsfonts}  % Provides AMS fonts (e.g., \mathbb)
+\usepackage{amssymb}   % Provides additional AMS symbols (e.g., \checkmark)
+\usepackage{amsthm}    % Provides theorem environments (\newtheorem)
+\usepackage{bm}        % Provides \bm{} command for bold math symbols
+\usepackage{cases}     % Provides 'numcases' environment for numbered cases
+
+% --- 4. Graphics and Colors ---
+\usepackage{graphicx} % Essential package for including external image files (\includegraphics)
+\graphicspath{{Images/}} % Specifies the default directory to search for image files
+\usepackage{xcolor}   % Provides extended color capabilities (used by Beamer themes)
+\usepackage{color}    % Basic color support (often loaded automatically by xcolor or Beamer)
+% Define custom colors using RGB model
+\definecolor{sdured}{rgb}{0.54297, 0, 0.0703} % Define a custom color named 'sdured' (SDU Red)
+
+% --- 5. Layout and Margins ---
+\setbeamersize{text margin left=0.042\paperwidth, text margin right=0.042\paperwidth} % Set left and right text margins relative to paper width
+
+% --- 6. Lists, Captions, Figures, and TOC ---
+\usepackage{caption}    % Allows customization of figure/table captions
+\captionsetup{font={scriptsize}} % Set the font size for captions to scriptsize
+\usepackage{subcaption} % Enables subfigures and subtables within figure/table environments
+\setbeamertemplate{itemize items}[default] % Use the default bullet style for itemize environments
+\setbeamertemplate{enumerate items}[circle] % Use circles for enumerate labels
+\setbeamertemplate{sections/subsections in toc}[square] % Use squares for section/subsection entries in the Table of Contents
+\setbeamertemplate{caption}[numbered] % Enable numbering for captions (Figure 1, Table 1, etc.)
+\setcounter{tocdepth}{1} % Control the depth of the Table of Contents (1: show only sections)
+
+% --- 7. Algorithms ---
+\usepackage{algorithm} % Provides a floating environment for algorithms
+\usepackage{algorithmic} % Provides commands for typesetting algorithm steps
+
+% --- 8. Bibliography ---
+\usepackage[backend=biber, style=numeric, sorting=none]{biblatex} % Load biblatex for bibliography management
+% backend=biber: Use Biber processor (recommended)
+% style=numeric: Use numeric citation style [1], [2], etc.
+% sorting=none: Use the order citations appear in the text
+\addbibresource{Reference.bib} % Specify the bibliography database file (.bib)
+\setbeamerfont{footnote}{size=\tiny} % Set the font size for footnotes
+
+% --- 9. Theorem-like Environments ---
+% Define custom theorem-like environments (requires amsthm)
+\newtheorem{assumption}{Assumption} % Define 'Assumption' environment, numbered sequentially
+\newtheorem{proposition}{Proposition} % Define 'Proposition' environment, numbered sequentially
+\setbeamertemplate{theorems}[numbered] % Use Beamer's numbered style for theorem environments
+
+% --- 10. Hyperlinks and URLs ---
+\usepackage{url} % Provides the \url{} command for typesetting URLs, allowing line breaks
+
+% --- 11. Beamer Themes ---
+% Outer theme: Controls the appearance of head-, foot-, and sidebars
+% \useoutertheme{infolines} % Alternative: Shows section/subsection in headline
+\useoutertheme[subsection=false]{miniframes} % Use 'miniframes' (dots for slides), hide subsection dots
+% Color themes: Define the color palettes for different elements
+\usecolortheme{whale}  % Apply the 'whale' color theme
+\usecolortheme{orchid} % Apply the 'orchid' color theme (this might override parts of 'whale'; consider choosing one primary theme)
+% Inner theme: Controls the appearance of itemize, enumerate, blocks, theorems, etc.
+\useinnertheme{rounded} % Use rounded corners for inner theme elements (like blocks)
+
+% --- 12. Beamer Element Templates ---
+% Block style
+\setbeamertemplate{blocks}[rounded][shadow=true] % Use rounded blocks with a shadow effect
+% Itemize symbol style and alignment
+\setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\textbullet}} % Adjust bullet size and vertical position for top-level items
+\setbeamertemplate{itemize subitem}{\scriptsize\raise1.25pt\hbox{\textbullet}} % Adjust bullet size and vertical position for sub-items
+\setbeamertemplate{itemize subsubitem}{\scriptsize\raise1.25pt\hbox{\textbullet}} % Adjust bullet size and vertical position for sub-sub-items
+
+% --- 13. Beamer Element Colors ---
+% Set colors for various Beamer elements (fg = foreground/text, bg = background)
+\setbeamercolor{title}{bg=black!5!white, fg=sdured} % Main title area colors
+\setbeamercolor{subtitle}{bg=white, fg=sdured} % Subtitle area colors
+\setbeamercolor{titlepageheader}{bg=white, fg=black} % Title page header area colors
+\setbeamercolor{titlepagefooter}{bg=white, fg=black} % Title page footer area colors
+\setbeamercolor{block title}{fg=white, bg=black} % Title bar of blocks
+\setbeamercolor{block body}{fg=black, bg=sdured!10!white} % Body area of blocks (light SDU red background)
+\setbeamercolor{structure}{bg=white, fg=sdured} % General structural elements (headlines, footlines, etc.)
+\setbeamercolor{frametitle}{bg=black!15!white, fg=sdured} % Frame title bar colors (light gray background, SDU red text)
+% \setbeamercolor{alerted text}{fg=darkOrange} % Example: Color for alerted text (commented out)
+% \setbeamercolor{navigation symbols}{fg=sdured} % Example: Set navigation symbol color explicitly if needed
+
+% --- 14. Beamer Element Fonts ---
+% Set fonts (size, series/weight) for various Beamer elements
+\setbeamerfont{frametitle}{size=\large, series=\bfseries} % Frame title font: large, bold
+\setbeamerfont{title}{size=\Large, series=\bfseries} % Main title font: Large, bold
+\setbeamerfont{author}{size=\normalsize} % Author font: normal size
+\setbeamerfont{date}{size=\scriptsize} % Date font: script size
+\setbeamerfont{subtitle}{size=\footnotesize, series=\bfseries} % Subtitle font: footnote size, bold
+\setbeamerfont{block title}{size=\normalsize} % Block title font: normal size
+\setbeamerfont{structure}{size=\normalsize, series=\bfseries} % Structural elements font: normal size, bold
+% Note: Footnote font size is set in the Bibliography section
+
+% --- 15. Custom Lengths for Layout ---
+% Define new length variables
+\newlength{\halfpaperwidth} % Not actively used in the current template definitions?
+\newlength{\headingleftmargin} % Left margin used in title page/heading calculations
+\newlength{\headingwidthminusmargins} % Helper length: Paper width minus margins
+\newlength{\headingheight} % Height allocated for heading elements (potentially unused)
+\newlength{\footerheight} % Height allocated for footer elements (potentially unused)
+\newlength{\titlepageheaderheight} % Height for the title page header area
+\newlength{\titlepagefooterheight} % Height for the title page footer area
+\newlength{\titlepagemaintitleblockheight} % Height for the main title block on the title page
+\newlength{\titlepagesubtitleblockheight} % Height for the subtitle block on the title page
+\newlength{\titlepagenamedateblockheight} % Height for the author/institute/date block on the title page
+\newlength{\titlepagespaceundername} % Vertical space below the author name on the title page
+\newlength{\titlepagespaceunderdate} % Vertical space below the date/institute on the title page
+
+% Assign values to the custom lengths
+\setlength{\headingleftmargin}{0.05573\paperwidth}
+\setlength{\headingwidthminusmargins}{\paperwidth}
+\addtolength{\headingwidthminusmargins}{-\headingleftmargin} % Calculate width minus margin
+\setlength{\headingheight}{0.1\paperheight} % Set heading height (relative to paper height)
+\setlength{\footerheight}{0.09017\paperheight} % Set footer height (relative to paper height)
+\setlength{\titlepageheaderheight}{0.17\paperheight} % Set title page header height
+\setlength{\titlepagefooterheight}{0.0\paperheight} % Set title page footer height (currently zero)
+\setlength{\titlepagemaintitleblockheight}{0.16\paperheight} % Set main title block height
+\setlength{\titlepagesubtitleblockheight}{0.1\paperheight} % Set subtitle block height
+\setlength{\titlepagenamedateblockheight}{0.42\paperheight} % Set author/institute/date block height
+\setlength{\titlepagespaceundername}{16pt} % Set space below author name
+\setlength{\titlepagespaceunderdate}{5pt} % Set space below date/institute
+
+% --- 16. Custom Commands ---
+% Define a reusable command for the page counter in the footline
+\newcommand{\footlinepagecounter}%
+{\insertframenumber{}/\inserttotalframenumber} % Displays "current_frame / total_frames"
+
+% --- 17. Custom Title Page Template ---
+\setbeamertemplate{title page} % Redefine the entire title page layout
+{%
+    % Top spacing box (invisible width, used for vertical positioning)
+    \begin{beamercolorbox}[sep=0cm, right, wd=0.0001\paperwidth, ht=\titlepageheaderheight, rightskip=\headingleftmargin]{titlepageheader} % Use titlepageheader color
+        \vskip0.0361\titlepageheaderheight % Add some vertical space at the top
+    \end{beamercolorbox}%
+    %
+    % Main title and subtitle block
+    \begin{beamercolorbox}[center, wd=0.92\paperwidth, ht=\titlepagemaintitleblockheight, rounded=true, shadow=true]{title} % Use title color, rounded, shadow
+        \usebeamerfont{title}\inserttitle % Insert the main title using its defined font
+        \vskip\titlepagespaceunderdate% Add vertical space
+        \usebeamerfont{subtitle}\insertsubtitle % Insert the subtitle using its defined font
+        \vskip\titlepagespaceunderdate% Add vertical space
+    \end{beamercolorbox}%
+    %
+    % Author, Institute, Date block
+    \begin{beamercolorbox}[center, wd=\paperwidth, ht=\titlepagenamedateblockheight]{white} % Use a plain white background
+        \usebeamerfont{author}\insertauthor\\ % Insert author, force newline
+        \vskip\titlepagespaceunderdate% Add vertical space
+        \medskip % Add medium vertical space
+        \usebeamerfont{institute}\insertinstitute\\ % Insert institute, force newline
+        \vskip\titlepagespaceunderdate% Add vertical space
+        \medskip % Add medium vertical space
+        \usebeamerfont{date}\insertdate \;\; % Insert date, add some horizontal space
+        \vskip\titlepagespaceunderdate% Add vertical space
+    \end{beamercolorbox}%
+    %
+    % Footer block (currently has zero height)
+    \begin{beamercolorbox}[center, wd=\paperwidth, ht=\titlepagefooterheight]{titlepagefooter} % Use titlepagefooter color
+        % Intentionally empty
+    \end{beamercolorbox}%
+} % End of title page definition
+
+% --- 18. Custom Footline Template ---
+% Define a custom footline template named 'ru theme'
+\defbeamertemplate*{footline}{ru theme}{% Define the template structure
+    \leavevmode% Ensure horizontal mode before starting the hbox
+    \hbox{% Create a horizontal box to contain the footline elements
+        % Left part: Author and Institute (short versions)
+        \begin{beamercolorbox}[wd=.333333\paperwidth, ht=2.25ex, dp=1.2ex, center]{author in head/foot}% Use 'author in head/foot' color, center aligned
+            \usebeamerfont{author in head/foot}\insertshortauthor~~(\insertshortinstitute) % Insert short author and institute
+        \end{beamercolorbox}%
+        % Middle part: Title (short version)
+        \begin{beamercolorbox}[wd=.333333\paperwidth, ht=2.25ex, dp=1.2ex, center]{title in head/foot}% Use 'title in head/foot' color, center aligned
+            \usebeamerfont{title in head/foot}\insertshorttitle % Insert short title
+        \end{beamercolorbox}%
+        % Right part: Date (short version) and Page Number
+        \begin{beamercolorbox}[wd=.333333\paperwidth, ht=2.25ex, dp=1.2ex, right]{date in head/foot}% Use 'date in head/foot' color, right aligned
+            \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em} % Insert short date, add horizontal space
+            \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} % Insert page number (current/total), add horizontal space
+        \end{beamercolorbox}%
+    }% End of hbox
+    \vskip0pt% Ensure no extra vertical space after the footline box
+} % End of footline template definition
+%
+% Apply the custom footline template
+\setbeamertemplate{footline}[ru theme] % Activate the 'ru theme' footline defined above
+
+% --- 19. Advanced Visual Customizations ---
+% Define a horizontal gradient shading for the frame title background
+\pgfdeclarehorizontalshading[frametitle.bg, frametitle right.bg]{beamer@frametitleshade}{\paperheight}{% Define shading named 'beamer@frametitleshade'
+    color(0pt)=(frametitle.bg); % Start color is the background color of frametitle
+    color(\paperwidth)=(frametitle right.bg) % End color is the background color of 'frametitle right' (might need defining if different)
+}
+% Note: This shading might interact with or override the simple 'frametitle' background color set earlier.
+% Its application depends on how the frame title template uses it.
+
+% --- 20. Navigation Symbols ---
+% \setbeamertemplate{headline}[default] % Example: Add a default headline (commented out)
+% \setbeamercolor{mycolor}{fg=white,bg=structure!30} % Example: Define a custom color (commented out)
+\setbeamertemplate{navigation symbols}{} % Remove the default Beamer navigation symbols initially
+
+% Add navigation symbols back, positioning them within the footline area
+\addtobeamertemplate{footline}{% Append the following code to the end of the current footline template
+    \leavevmode% Ensure horizontal mode
+    \hbox{% Create a horizontal box for the symbols
+        \begin{beamercolorbox}[wd=\paperwidth, ht=2.75ex, dp=.5ex, right, rightskip=1em]{frametitle}% Use frametitle colorbox, align right, add padding
+            \usebeamercolor[fg]{navigation symbols}% Use the foreground color defined for navigation symbols (defaults if not set)
+            % Insert the standard navigation symbols
+            \insertslidenavigationsymbol% Slide navigation (e.g., arrows)
+            \insertframenavigationsymbol% Frame navigation
+            \insertsubsectionnavigationsymbol% Subsection navigation
+            \insertsectionnavigationsymbol% Section navigation
+            \insertdocnavigationsymbol% Document navigation (e.g., home icon)
+            \insertbackfindforwardnavigationsymbol% Back/Forward navigation symbols
+        \end{beamercolorbox}%
+    }% End of hbox
+    \vskip0.5pt% Add a small vertical space after the navigation symbols
+}{} % End of \addtobeamertemplate (empty third argument)
+%
+
+% --- End of Style File ---
