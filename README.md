@@ -1,6 +1,7 @@
 # Project Introduction
 
 -   A collection of self-made LaTeX templates, also referencing various projects (see [Reference Projects](#reference-projects)).
+-   This project is not a collection of various templates; I only collect and create templates that are useful to me.
 
 # Important Notes
 
