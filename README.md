@@ -2,6 +2,7 @@
 
 -   A collection of self-made LaTeX templates, also referencing various projects (see [Reference Projects](#reference-projects)).
 -   This project is not a collection of various templates; I only collect and create templates that are useful to me.
+-   For template demonstrations, see [Template Showcase](https://github.com/Arshtyi/LaTeX-Templates/wiki/%E6%A8%A1%E6%9D%BF%E5%B1%95%E7%A4%BA)
 
 # Important Notes
 
