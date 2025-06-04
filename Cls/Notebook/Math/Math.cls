@@ -80,7 +80,26 @@
 \RequirePackage{environ}          % Environment creation tools
 
 % ===========================================================================
-% VI. HYPERLINKS AND REFERENCES
+% VI. BIBLIOGRAPHY SYSTEM
+% ===========================================================================
+
+% --- Modern Bibliography with biblatex ---
+\RequirePackage[
+    backend=biber,            % Bibliography processor (more powerful than bibtex)
+    style=numeric-comp,       % International numeric citation style with compression
+    sorting=nyt,              % Sort by name, year, title
+    maxbibnames=99,           % Show all authors in bibliography
+    maxcitenames=2,           % Show max 2 authors in citations
+    mincitenames=1,           % Show min 1 author in citations
+    giveninits=false,         % Use full given names
+    uniquename=false,         % Don't disambiguate names
+    uniquelist=false,         % Don't disambiguate lists
+    alldates=terse,           % Compact date format
+    defernumbers=true         % Defer numbering for proper sorting
+]{biblatex}
+
+% ===========================================================================
+% VII. HYPERLINKS AND REFERENCES
 % ===========================================================================
 
 % --- Hyperlink System ---

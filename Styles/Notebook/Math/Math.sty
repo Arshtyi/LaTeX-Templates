@@ -682,23 +682,61 @@
 \crefname{tcb@cnt@claim}{\textbf{Claim}}{Claims}
 \Crefname{tcb@cnt@claim}{\textbf{Claim}}{Claims}
 % ===========================================================================
-% XI. BIBLIOGRAPHY SUPPORT
+% XI. BIBLIOGRAPHY SUPPORT (BIBLATEX)
 % ===========================================================================
 
-% --- Bibliography Generation Command ---
-\newcommand{\generateBibliography}[1]{%
+% --- Bibliography Configuration ---
+% Add bibliography resource file
+\newcommand{\addbibfile}[1]{%
+    \addbibresource{#1.bib}%
+}
+
+% --- Custom Citation Commands ---
+% Upper case citation for superscript citations (only define if not already exists)
+\ifdefined\upcite
+    % Command already exists, do nothing
+\else
+    \DeclareCiteCommand{\upcite}[\mkbibsuperscript]
+      {\iffieldundef{prenote}{}{\BibliographyWarning{Ignoring prenote argument}}%
+       \iffieldundef{postnote}{}{\BibliographyWarning{Ignoring postnote argument}}}
+      {\usebibmacro{citeindex}%
+       \bibopenbracket\usebibmacro{cite}\bibclosebracket}
+      {\supercitedelim}
+      {}
+\fi
+
+% --- Bibliography Generation Commands ---
+% Modern bibliography generation using biblatex
+\newcommand{\generateBibliography}[1][]{%
     \newpage%
     \pagenumbering{Roman}%
     \setcounter{page}{1}%
     \pagestyle{plain}%
-    \nocite{*}%
-    \bibliographystyle{plain}%
     \clearpage%
     \phantomsection%
-    \renewcommand{\bibname}{References}%
+    
+    % Include all entries from bibliography file (even uncited ones)
+    \nocite{*}%
+    
+    % Add bibliography to table of contents
     \addcontentsline{toc}{chapter}{References}%
-    \bibliography{#1}%
-}% <- Comment to prevent parsing errors
+    
+    % Print bibliography with custom heading
+    \printbibliography[
+        title={References},
+        heading=bibintoc,
+        #1
+    ]%
+}
+
+% --- Bibliography Localization ---
+% Configure English field names for international style
+\DefineBibliographyStrings{english}{%
+    bibliography = {References},
+    references = {References},
+    and = {and},
+    andothers = {et\addabbrvspace al\adddot},
+}
 
 % ===========================================================================
 % End of Style File
