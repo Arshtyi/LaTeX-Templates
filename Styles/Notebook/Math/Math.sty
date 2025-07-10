@@ -58,7 +58,8 @@
 % ===========================================================================
 
 % --- Color Package ---
-\usepackage[dvipsnames,svgnames]{xcolor} % Extended color support with predefined color sets
+\PassOptionsToPackage{dvipsnames,svgnames}{xcolor} % Pass options before potential loading
+\RequirePackage{xcolor} % Extended color support with predefined color sets
 
 % --- Document Theme Colors ---
 \definecolor{doc}{RGB}{0,60,110}          % Main document color - dark blue
@@ -84,9 +85,9 @@
 \definecolor{myexampleti}{HTML}{5D4037}   % Example title - 深褐色
 \definecolor{mydefinitbg}{HTML}{E3F2FD}   % Definition background - 浅蓝色
 \definecolor{mydefinitfr}{HTML}{1565C0}   % Definition frame - 深蓝色
-\definecolor{myremarkbg}{HTML}{FFF1F2}    % Remark background - light red 
-\definecolor{myremarkfr}{RGB}{199,20,44}  % Remark frame - bright red 
-\definecolor{myremarkti}{RGB}{199,20,44}  % Remark title - bright red 
+\definecolor{myremarkbg}{HTML}{FFF1F2}    % Remark background - light red
+\definecolor{myremarkfr}{RGB}{199,20,44}  % Remark frame - bright red
+\definecolor{myremarkti}{RGB}{199,20,44}  % Remark title - bright red
 \definecolor{myclaimsbg}{HTML}{EFEBE9}    % Claim background - 浅土灰色
 \definecolor{myclaimsfr}{HTML}{795548}    % Claim frame - 土灰色
 \definecolor{myclaimsti}{HTML}{795548}    % Claim title - 土灰色
@@ -714,13 +715,13 @@
     \pagestyle{plain}%
     \clearpage%
     \phantomsection%
-    
+
     % Include all entries from bibliography file (even uncited ones)
     \nocite{*}%
-    
+
     % Add bibliography to table of contents
     \addcontentsline{toc}{chapter}{References}%
-    
+
     % Print bibliography with custom heading
     \printbibliography[
         title={References},

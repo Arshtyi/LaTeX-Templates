@@ -10,7 +10,7 @@
 
 # Environment
 
--   Developed on Ubuntu 24.04. (This implies potential compatibility issues on other operating systems, especially regarding fonts. Please ensure dependencies are met.)
+-   Developed on ~~Ubuntu 24.04~~ Fedora41. (This implies potential compatibility issues on other operating systems, especially regarding fonts. Please ensure dependencies are met.)
 -   Using [TeX Live 20250308](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/).
 -   Package version issues may occur. Use the command `tlmgr update --all` to update your packages.
 -   All templates are compiled using either `XeLaTeX -> XeLaTeX` or `XeLaTeX -> BibTeX(or Biber) -> XeLaTeX -> XeLaTeX` compilation workflows.
