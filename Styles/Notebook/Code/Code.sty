@@ -1,0 +1,55 @@
+\lstset{
+    basicstyle=\ttfamily,
+    columns=fullflexible,
+    keepspaces=true,
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny\color{black},
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{white},
+    frame=single,
+    rulecolor=\color{black},
+    tabsize=4,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=true,
+    escapeinside={(*@}{@*)}
+}
+\lstdefinestyle{mystyle}{
+    basicstyle=\ttfamily\footnotesize\fontspec{Fira Code},
+    columns=fullflexible,
+    keepspaces=true,
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny\color{black},
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{white},
+    frame=single,
+    rulecolor=\color{black},
+    tabsize=4,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=true,
+    escapeinside={(*@}{@*)},
+    keywordstyle=\color{black},
+    commentstyle=\color{black},
+    stringstyle=\color{black},
+    identifierstyle=\color{black}
+}
+\lstset{style=mystyle}
+\lstdefinelanguage{CPP}{
+    keywords={class,public,private,protected,virtual,override,static,void,int,float,double,char,bool,string,if,else,for,while,return,new,delete,this},
+    sensitive=true,
+    comment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    string=[b]",
+    morestring=[b]',
+    morestring=[b]`,
+    identifierstyle=\color{black},
+    keywordstyle=\color{black},
+    commentstyle=\color{black},
+    stringstyle=\color{black},
+}
+\setlength{\headheight}{12.64723pt}

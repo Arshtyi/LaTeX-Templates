@@ -1,0 +1,26 @@
+\documentclass{../../../Cls/Notebook/Code/Code}
+\usepackage{../../../Styles/Notebook/Code/Code}
+\title{\Huge{Code Notes}}
+\author{\huge{Arshtyi}}
+\date{\today}
+\newcommand{\fzd}[1]{\ensuremath{O\left(#1\right)}}
+\newcommand{\code}[1]{\lstinputlisting[language=CPP]{code/#1.cpp}}
+\begin{document}
+\maketitle
+\newpage
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\pagestyle{plain}
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\section{排序}
+\subsection{快速排序}
+时间复杂度：\fzd{n \log n}，空间复杂度：\fzd{n}
+\code{QuickSort}
+\end{document}
