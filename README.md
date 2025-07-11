@@ -41,7 +41,7 @@ See the [MIT LICENSE](https://github.com/Arshtyi/LaTeX-Templates/blob/main/LICEN
 # Contact Me
 
 -   QQ: 640006128
--   E-mail: arshtyi_trantor@outlook.com
+-   E-mail: arshtyi@foxmail.com
 
 # Reference Projects
 
