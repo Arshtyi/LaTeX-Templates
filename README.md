@@ -31,7 +31,8 @@
 -   [Shandong University - Beamer Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/SDU/Beamer)
 -   [Mathematics Notes Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/Notebook/Math)
 -   [Shandong University - Thesis Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/SDU/Thesis)
--   [Code Notes Template]()
+-   [Code Notes Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/Notebook/Code)
+-   [CUMCM Thesis Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/Thesis/CUMCM)
 
 # License
 
