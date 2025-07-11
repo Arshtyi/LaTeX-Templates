@@ -1,0 +1,158 @@
+%%数学表达式辨别建模L的aTe5X图片、表格公式等代码模板
+%%注意编译前需将编辑器的编译方式设置为xelatex
+% \documentclass[withoutpreface,bwprint,utf8,a4paper]{../../../Cls/Thesis/CUMCM/CUMCM} %去掉封面与编号页
+\documentclass[bwprint,a4paper]{../../../Cls/Thesis/CUMCM/CUMCM} %存储保留封面与编号页
+\usepackage{../../../Styles/Thesis/CUMCM/CUMCM} %加载样式文件
+\graphicspath{{figure}} %可根据个人实际情况更改图片存储位置
+\rhead{题目序号}
+\lhead{比赛名称}
+\cfoot{\thepage}
+\title{题目标题}
+\tihao{A}
+\membera{队员1} %第1人
+\memberb{队员2} %第2人
+\memberc{队员3} %第3人
+\supervisor{指导老师} %指导老师
+\yearinput{2025}
+\monthinput{01}
+\dayinput{01}
+\begin{document}
+    \maketitle
+    \begin{abstract}
+一段话。\par
+
+另一段话。\par
+
+一些总结
+        \keywords{关键词1 \quad 关键词2 \quad 关键词3 \quad 关键词4 \quad 关键词5 }%建议4-5个
+    \end{abstract}
+
+\tableofcontents
+\newpage
+\section{问题重述}
+\subsection{问题背景}
+一个引用\cite{bib:1}。一些描述。
+\subsection{相关数据}
+\begin{table}[h]
+    %\setlength{\abovecaptionskip}{0cm}
+    %\setlength{\belowcaptionskip}{-0.2cm}
+    %\large%调整整体内容的大小
+    \caption{参数}
+    \centering
+    \begin{tabular}{cc}
+        \toprule[1.5pt]
+        \makebox[0.2\textwidth][c]{参数}	&  \makebox[0.35\textwidth][c]{参数值}\\
+        \midrule[1pt]
+        1  &  1 \\
+        2 &  2 \\
+        3  &  3 \\
+        4  &  4\\
+        5  &  5\\
+        6  &  6 \\
+        \bottomrule[1.5pt]
+    \end{tabular}
+    \label{tab:参数}
+\end{table}
+
+\subsection{需要解决的问题}
+\textbf{问题一}
+\par 描述。
+\par
+\textbf{问题二}
+\par 描述。
+\par
+\textbf{问题三}
+\par 描述。
+\par
+\textbf{问题四}
+\par 描述。
+
+\textbf{问题五}
+\par 描述。
+\par
+
+\section{模型的假设}
+    \begin{itemize}[label=]
+        \item 1
+        \item 2
+        \item 3
+        \item 4
+        \item 5
+        \item 6
+    \end{itemize}
+
+\section{符号的说明}
+    本模型所用的各主要变量符号及意义见\cref{tab:symbol}
+\begin{center}
+\begin{longtable}{cc}
+    \caption{主要变量符号及意义}\\
+    \label{tab:symbol} \\
+    \midrule
+        \makebox[0.2\textwidth][c]{符号}	&  \makebox[0.6\textwidth][c]{意义}\\
+        \midrule[0.5pt]
+         $t$  & 时间  \\
+          $r$  & 距离  \\
+          $a$  & 距离 \\
+          $b$  & 距离\\
+          $\rho$  & 距离（单位：m）  \\
+          $\omega$  &  速度 \\
+          $eps$  &  误差 \\
+ \bottomrule
+\end{longtable}
+\end{center}
+
+\section{模型建立与求解}
+\subsection{问题一的分析与求解}
+\subsubsection{模型的分析}
+hajkshfklajlkf4
+
+\subsubsection{模型的建立与求解}
+\paragraph{\textbf{一.aklfnlk$\theta$}} \hspace*{\fill} \par
+ajflkajslf\cite{bib:2}：
+\begin{equation} r(\theta) = a + b \theta
+\end{equation}
+\par
+aklfjalkjf,$a=0$,有：
+\begin{equation} r(\theta) = b \theta
+\end{equation}
+\par
+akmfnkalf\cite{bib:2}：
+\begin{equation}\label{3} x=X(\theta,b) = b\times\theta\times \cos(\theta), \quad y=Y(\theta,b) = b\times\theta \times \sin(\theta)
+\end{equation}
+\par 其中，$b$kaljflkasf，为$\frac{0.55}{2 \pi}$
+\par
+aklfklf
+\newpage
+\begin{thebibliography}{9}%宽度9
+    \bibitem{bib:1}jasldfjk
+\bibitem{bib:2}，amfnlas
+\end{thebibliography}
+\newpage
+%附录
+\begin{appendices}
+    \section{求解相关结果函数}
+    \begin{lstlisting}[language=matlab, basicstyle = \ttfamily,breaklines = true]
+
+import numpy as np
+import time
+
+# Function to generate Archimedean spiral points
+def archimedean_spiral(a, b, theta):
+    r = a + b * theta / (2 * np.pi)
+    x = r * np.cos(theta)
+    y = r * np.sin(theta)
+    return x, y
+
+# 计算 getS(b, theta)
+def getS(b, theta):
+    sqrt_term = np.sqrt(1 + theta**2)
+    log_term = np.log(theta + sqrt_term)
+    b = b / (2 * np.pi)
+    s_theta = 0.5 * b * (theta * np.sqrt(1 + theta**2) - np.log(theta + sqrt_term))
+    return s_theta
+    \end{lstlisting}
+
+
+\end{appendices}
+
+\end{document}

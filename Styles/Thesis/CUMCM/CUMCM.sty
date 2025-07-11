@@ -1,0 +1,25 @@
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}  %定义符合科学规范的微分算符\dif
+\numberwithin{equation}{subsection} %将子章节的编号赋值给公式编号
+\renewcommand\theequation{\arabic{section}-\arabic{subsection}-\arabic{equation}}%将公式编号格式定义为类似(5-2-1)的形式
+%%一些额外的宏包
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{longtable}
+\usepackage{diagbox}
+\usepackage{siunitx}%SI单位制，建议所有单位都采用宏包中的命令，宏包文档网上很容易获取。注意命令应在文本环境使用，公式环境会改变展示效果
+\usepackage{physics}
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\ExplSyntaxOn
+\msg_redirect_name:nnn { siunitx } { physics-pkg } { none }
+\ExplSyntaxOff
+%以上抑制思路来自于https://tex.stackexchange.com/questions/681700/silencing-siunitx-and-physics-package-qty-warning
+\usepackage{float} %设置图片浮动位置的宏包
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}%不但可以压缩参考文献标号，还可以自动排序。比如[8,6,7,9]变成[6-9]，引用格式\cite{bib:two,bib:three,bib:four,bib:one}
+% \usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% 修正 fancyhdr 页眉高度警告
+\setlength{\headheight}{14.55344pt}
+\addtolength{\topmargin}{-0.10344pt}

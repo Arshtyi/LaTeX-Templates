@@ -31,6 +31,7 @@
 -   [Shandong University - Beamer Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/SDU/Beamer)
 -   [Mathematics Notes Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/Notebook/Math)
 -   [Shandong University - Thesis Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/SDU/Thesis)
+-   [Code Notes Template]()
 
 # License
 
@@ -51,3 +52,4 @@ Borrowed from or developed based on the following projects.
 -   [Dotfiles](https://github.com/SeniorMars/dotfiles)
 -   [AlJabr](https://github.com/wenweili/AlJabr-1)
 -   [sduthesis](https://github.com/wangzhukang/sduthesis)
+-   [CUMCM Thesis](https://github.com/latexstudio/CUMCMThesis)
