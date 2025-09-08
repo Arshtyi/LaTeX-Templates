@@ -1,0 +1,30 @@
+% !Mode:: "TeX:UTF-8"
+% !TEX program  = xelatex
+
+% Document class declaration
+\documentclass{../../../../Cls/SDU/ExpReport/BlockChain/BlockChain}
+
+% Import style package
+\usepackage{../../../../Styles/SDU/ExpReport/BlockChain/BlockChain}
+
+% Initialize document metadata variables
+\sduCourse{区块链原理} % Course name and semester
+\sduStudentId{Trantor} % Student ID
+\sduName{Arshtyi} % Student name
+\sduStudentClass{智能24} % Student class
+\sduExperimentalTopics{Merkle Tree数据结构} % Experiment topic
+\sduDate{\today} % Current date
+
+% Begin document content
+\begin{document}
+\begin{sduDocument}
+\section{原理分析与步骤}
+\section{结论分析与体会}
+\sduAppendix
+\lstinputlisting[
+    style = Python,
+    caption = {\bf Example of Python},
+    label = {lst:ExamplePy},
+    ]{code/main.py}
+\end{sduDocument}
+\end{document}

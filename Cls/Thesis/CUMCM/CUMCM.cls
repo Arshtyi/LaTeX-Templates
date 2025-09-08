@@ -1,6 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{CUMCM}
-              [Standard LaTeX Template for CUMCM]
+\ProvidesClass{CUMCM}[Standard LaTeX Template for CUMCM]
 %% Inital Code
 \newif\if@mcm@bwprint\@mcm@bwprintfalse
 \newif\if@mcm@preface\@mcm@prefacetrue
@@ -70,11 +69,7 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{xcolor}
 % 插入链接
 \RequirePackage{url}
-% 绘图的包
-%\RequirePackage{tikz}
-%\usetikzlibrary{snakes}
-
-% 字图与子标题
+% 子图与子标题
 \RequirePackage{subcaption}
 \RequirePackage[titles]{tocloft}
 %\renewcommand{\cftdot}{$\cdot$}
@@ -83,32 +78,32 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \setlength{\cftbeforesecskip}{7pt}
 \setlength{\cftbeforesubsecskip}{3pt}
 %\setlength{\cftbeforesubsecskip}{5pt}
-\renewcommand{\cftsecfont}{\bfseries\zihao{-4}\heiti}
+% Ensure CJK family (heiti) is selected before applying \bfseries so
+% bold requests target the heiti family instead of the default song (SimSun).
+\renewcommand{\cftsecfont}{\heiti\bfseries\zihao{-4}}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
 \renewcommand{\cftsecaftersnumb}{\hskip.4em}
-
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
-
 \lstset{
-  frame=tb,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  framerule=1pt,
-  rulecolor=\color{gray!35},
-  backgroundcolor=\color{gray!5},
-  basicstyle={\small\ttfamily},
-  numbers=none,
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3,
+    frame=tb,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    framerule=1pt,
+    rulecolor=\color{gray!35},
+    backgroundcolor=\color{gray!5},
+    basicstyle={\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=3,
 }
 % 首行缩进
 \RequirePackage{setspace}
@@ -120,11 +115,8 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \RequirePackage{ulem}
 % 尺寸计算
 \RequirePackage{calc}
-
 \RequirePackage[titletoc,title]{appendix}
-
 %\RequirePackage[title,toc,titletoc]{appendix}
-
 \RequirePackage{etoolbox}
 \AtBeginEnvironment{thebibliography}{%
     \phantomsection
@@ -152,13 +144,21 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \setmainfont{Times New Roman}
 %\setmonofont{Courier New}
 \usepackage{xeCJK}
-\setCJKmainfont{Source Han Serif SC}
+% Set CJK main font and ensure bold requests use the installed bold face.
+\setCJKmainfont{Source Han Serif SC}[BoldFont={Source Han Serif SC Bold},AutoFakeBold]
 \setsansfont{Arial}
-\setCJKfamilyfont{kai}[AutoFakeBold]{KaiTi}
+\setCJKfamilyfont{kai}[BoldFont={Source Han Serif SC Bold},AutoFakeBold]{KaiTi}
 \newcommand*{\kai}{\CJKfamily{kai}}
-\setCJKfamilyfont{song}[AutoFakeBold]{SimSun}
+% Define song (宋体) family: use SimSun for regular, but map bold requests
+% to a serif font that provides a bold face (Source Han Serif SC), and
+% keep AutoFakeBold as a fallback when a bold face is still unavailable.
+% Define song (宋体) family: use SimSun for regular; map bold to Source Han Serif SC Bold.
+\setCJKfamilyfont{song}[BoldFont={Source Han Serif SC Bold},AutoFakeBold]{SimSun}
 \newcommand*{\song}{\CJKfamily{song}}
-
+% Define heiti (黑体) family: use SimHei regular and map bold to Source Han Serif SC Bold as fallback.
+\setCJKfamilyfont{hei}[BoldFont={Source Han Serif SC Bold},AutoFakeBold]{SimHei}
+\newcommand*{\hei}{\CJKfamily{hei}}
+\renewcommand*{\heiti}{\CJKfamily{hei}}
 \renewcommand\normalsize{%
     \@setfontsize\normalsize{12.05}{14.45}%
     \abovedisplayskip 12\p@ \@plus3\p@ \@minus7\p@
@@ -177,7 +177,6 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 \newtheorem{example}{\mcm@cap@example}
 \newtheorem{proof}{\mcm@cap@proof}
 \newtheorem{solution}{\mcm@cap@solution}
-
 % 浮动环境设置
 % 默认情况下, \LaTeX{} 要求每页的文字至少占据 20%,否则该页就只单独放置一个浮动环境,
 % 而这通常不是我们想要的, 我们将这个要求降低到 5%.
@@ -224,7 +223,6 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
     labelsep=0.5em, % 包含标签的盒子与列表项的第一行文本之间的间隔
     labelwidth=2em % 包含标签的盒子的正常宽度；若实际宽度更宽，则使用实际宽度。
 }
-
 % 超链接
 \hypersetup{%
     % xetex,
@@ -245,7 +243,8 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
 }
 \lstnewenvironment{tcode}
 {
-    \lstset{basicstyle = \small\ttfamily,
+    \lstset{
+        basicstyle = \small\ttfamily,
         language=TeX,
         tabsize = 4,
         frame = single,
@@ -313,17 +312,17 @@ Just choose `xelatex', no `pdflatex' or `latex' and so on.}
       \global\@topnum\z@   % Prevents figures from going at top of page.
       \@maketitle
     \endgroup
-  \global\let\thanks\relax
-  \global\let\maketitle\relax
-  \global\let\@maketitle\relax
-  \global\let\@thanks\@empty
-  \global\let\@author\@empty
-  \global\let\@date\@empty
-  \global\let\@title\@empty
-  \global\let\title\relax
-  \global\let\author\relax
-  \global\let\date\relax
-  \global\let\and\relax
+    \global\let\thanks\relax
+    \global\let\maketitle\relax
+    \global\let\@maketitle\relax
+    \global\let\@thanks\@empty
+    \global\let\@author\@empty
+    \global\let\@date\@empty
+    \global\let\@title\@empty
+    \global\let\title\relax
+    \global\let\author\relax
+    \global\let\date\relax
+    \global\let\and\relax
 }
 \def\@maketitle{%
   \newpage
