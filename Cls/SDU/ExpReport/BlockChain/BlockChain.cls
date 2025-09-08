@@ -15,7 +15,7 @@
 \newcommand*\sdu@tokens@name{}             % Stores the student name
 \newcommand*\sdu@tokens@experimentalTopics{} % Stores the experimental topics
 \newcommand*\sdu@tokens@date{}             % Stores the date
-
+\newcommand*\sdu@tokens@time{}             % Stores the time
 %% ============================================================================
 %% ==                         Loading Base Class                           ==
 %% ============================================================================
@@ -144,6 +144,8 @@
             \put( 135, -40.0){\makebox(0,0)[l]{日期: \sdu@tokens@date}}
             \put( 17, -43.6){\line(1,0){176}} % Lower horizontal line
             \put( 20, -50){\makebox(0,0)[l]{\large{实验题目: \sdu@tokens@experimentalTopics}}} % Experimental Topics
+            \put( 147, -56.9){\line(0,1){13.3}} % Vertical separator line
+            \put( 150, -50.0){\makebox(0,0)[l]{实验学时: \sdu@tokens@time}}
         }
         \vspace{13mm} % Add vertical space after the header block
         }
@@ -170,7 +172,8 @@
     \renewcommand{\sdu@tokens@experimentalTopics}{#1}}
 \newcommand*\sduDate[1]{                % Sets the date
     \renewcommand{\sdu@tokens@date}{#1}}
-
+\newcommand*\sduTime[1]{                % Sets the time
+    \renewcommand{\sdu@tokens@time}{#1}}
 %% ============================================================================
 %% ==                         End of Class File                            ==
 %% ============================================================================
