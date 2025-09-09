@@ -27,6 +27,7 @@
 
 -   [Shandong University - Introduction to AI Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/SDU/ExpReport/IntroductiontoAI)
 -   [Shandong University - Block Chain Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/SDU/ExpReport/BlockChain)
+-   [Shandong University - Computer Network Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/SDU/ExpReport/ComputerNetwork)
 -   [Shandong University - College Physics Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/SDU/ExpReport/Physics)
 -   [Shandong University - Introduction to Computing Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/SDU/ExpReport/IntroductiontoComputing)
 -   [Shandong University - Beamer Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/SDU/Beamer)
