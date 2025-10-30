@@ -30,6 +30,7 @@
 -   [Shandong University - Computer Network Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/SDU/ExpReport/ComputerNetwork)
 -   [Shandong University - College Physics Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/SDU/ExpReport/Physics)
 -   [Shandong University - Introduction to Computing Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/SDU/ExpReport/IntroductiontoComputing)
+-   [Shandong University - Robot Experiment Report Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/SDU/ExpReport/Robot)
 -   [Shandong University - Beamer Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/SDU/Beamer)
 -   [Mathematics Notes Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/Notebook/Math)
 -   [Shandong University - Thesis Template](https://github.com/Arshtyi/LaTeX-Templates/tree/main/Templates/SDU/Thesis)

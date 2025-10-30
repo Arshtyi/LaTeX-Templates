@@ -1,0 +1,113 @@
+% IntroductiontoAI.sty - Style file for Robot experiment reports
+
+%% ============================================================================
+%% ==                         Loading Packages                             ==
+%% ============================================================================
+
+% --- Basic Functionality ---
+\usepackage{blindtext}    % For generating sample text (useful for testing layout)
+\usepackage{ctex}         % Provides comprehensive Chinese language support
+\usepackage{indentfirst}  % Indents the first paragraph after a section heading
+
+% --- Tables ---
+\usepackage{booktabs}     % For creating professional-quality tables
+
+% --- Mathematics ---
+\usepackage{amsmath}      % Enhanced support for mathematical formulas
+\usepackage{anyfontsize}  % Addresses potential font size issues in formulas
+
+% --- Figures and Captions ---
+\usepackage{caption}      % Allows customization of captions for figures and tables
+\usepackage{subcaption}   % Enables the creation of subfigures and subtables
+
+% --- Cross-referencing ---
+\usepackage{cleveref}     % Provides intelligent cross-referencing (e.g., automatically uses "Figure" or "Figures")
+
+% --- Code Listings (Handled by listings package loaded in .cls) ---
+% Note: The listings package itself is loaded in the associated .cls file.
+% This .sty file configures its behavior.
+
+%% ============================================================================
+%% ==                      List Spacing Configuration                      ==
+%% ============================================================================
+
+% --- Compact list spacing (Optional) ---
+% Uncomment the following lines if more compact lists (itemize, enumerate, description) are desired.
+% \usepackage{paralist}
+% \let\itemize\compactitem
+% \let\enditemize\endcompactitem
+% \let\enumerate\compactenum
+% \let\endenumerate\endcompactenum
+% \let\description\compactdesc
+% \let\enddescription\endcompactdesc
+
+%% ============================================================================
+%% ==                   Code Listing Configuration (listings)              ==
+%% ============================================================================
+
+% --- General Listings Settings ---
+\lstset{
+    basicstyle          =   \sffamily,          % Base font style for code (sans-serif)
+    keywordstyle        =   \bfseries,          % Style for keywords (bold)
+    commentstyle        =   \rmfamily\itshape,  % Style for comments (roman, italic)
+    stringstyle         =   \ttfamily,          % Style for strings (monospace)
+    flexiblecolumns,                            % Allow flexible column widths
+    numbers             =   left,               % Display line numbers on the left
+    showspaces          =   false,              % Do not visualize spaces
+    numberstyle         =   \zihao{-5}\ttfamily, % Style for line numbers (small size, monospace)
+    showstringspaces    =   false,              % Do not visualize spaces within strings
+    captionpos          =   t,                  % Position captions above the code block
+    frame               =   shadowbox,          % Draw a shadowed box frame around the code
+    rulesepcolor        =   \color{red!20!green!20!blue!20}, % Color for frame rules (light gray)
+    breaklines          =   true,               % Automatically break long lines
+    breakatwhitespace   =   true,               % Prefer breaking lines at whitespace
+    % Add other general settings as needed
+}
+
+% --- Language Definitions ---
+
+% Define Matlab language specifics
+\lstdefinelanguage{Matlab}{
+    morekeywords={break,case,catch,continue,else,elseif,end,for,function,global,if,otherwise,persistent,return,switch,try,while},
+    sensitive=true,
+    morecomment=[l]\%,                     % Line comments start with %
+    morestring=[m]',                       % Strings are enclosed in single quotes
+}
+% --- Language Styles ---
+\lstdefinestyle{Matlab}{
+    language        =   Matlab,
+    keywordstyle    =   \color{blue}\bfseries,
+    commentstyle    =   \color{green!50!black}\itshape,
+    stringstyle     =   \color{red},
+}
+%% ============================================================================
+%% ==        Figure, Caption, and Referencing Configuration              ==
+%% ============================================================================
+
+% --- Figure/Subfigure Caption Customization ---
+\renewcommand{\figurename}{Figure} % Change the default name "Figure" (if needed, e.g., for language)
+\DeclareCaptionFormat{subfig}{Figure \thefigure~-~(#1): #3} % Custom format for subfigure captions: "Figure <main_fig_num> - (<subfig_letter>): <subfig_caption>"
+\captionsetup[subfigure]{format=subfig, labelformat=simple} % Apply the custom format to subfigures
+\renewcommand{\thesubfigure}{\alph{subfigure}} % Use lowercase letters (a, b, c) for subfigure numbering
+
+% --- Subfigure Reference Format Customization ---
+% Modifies how \ref{...} refers to subfigures
+\makeatletter
+\renewcommand{\p@subfigure}{\thefigure~-~(} % Prefix for subfigure references: "<main_fig_num> - ("
+\renewcommand{\thesubfigure}{\alph{subfigure})} % Subfigure number format within references: "a)", "b)", etc.
+\makeatother
+
+% --- Cross-reference Naming (cleveref) ---
+\crefname{figure}{Figure}{Figures} % Define singular and plural names for figure references used by \cref
+\crefname{subfigure}{Figure}{Figures} % Define singular and plural names for subfigure references used by \cref (often same as figure)
+
+%% ============================================================================
+%% ==                         Layout Adjustments                           ==
+%% ============================================================================
+
+\raggedbottom     % Allows the bottom margin to be flexible, preventing excessive stretching of vertical space on pages that are not full.
+\setlength{\parskip}{0.5\baselineskip} % Sets the space between paragraphs to half a line height.
+
+%% ============================================================================
+%% ==                         End of Style File                            ==
+%% ============================================================================
